@@ -1,23 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads_clone/components/entry_dto.dart';
 import 'package:threads_clone/utils/text_utils.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 class Entry extends StatefulWidget {
-  const Entry(
-      {super.key,
-      required this.replyCount,
-      required this.likeCount,
-      this.isVerifiedUser = false,
-      this.photoAddedPath,
-      required this.username,
-      required this.entryText});
-  final int replyCount;
-  final int likeCount;
-  final String username;
-  final bool isVerifiedUser;
-  final String entryText;
-  final String? photoAddedPath;
+  const Entry({super.key, required this.entryDTO});
+  final EntryDTO entryDTO;
 
   @override
   State<Entry> createState() => _EntryState();
@@ -26,12 +15,13 @@ class Entry extends StatefulWidget {
 class _EntryState extends State<Entry> {
   @override
   Widget build(BuildContext context) {
-    final int replyCount = widget.replyCount;
-    final int likeCount = widget.likeCount;
-    final String username = widget.username;
-    final bool isVerifiedUser = widget.isVerifiedUser;
-    final String entryText = widget.entryText;
-    final String? photoAddedPath = widget.photoAddedPath;
+    EntryDTO entryDTO = widget.entryDTO;
+    final int replyCount = entryDTO.replyCount;
+    final int likeCount = entryDTO.likeCount;
+    final String username = entryDTO.username;
+    final bool isVerifiedUser = entryDTO.isVerifiedUser;
+    final String entryText = entryDTO.entryText;
+    final String? photoAddedPath = entryDTO.photoAddedPath;
 
     return Padding(
       padding: const EdgeInsets.only(top: 20),
