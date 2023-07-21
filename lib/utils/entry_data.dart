@@ -1,16 +1,15 @@
-import 'package:threads_clone/dtos/entry_dto.dart';
 import 'package:threads_clone/utils/text_utils.dart';
 import 'package:threads_clone/utils/utils.dart';
 import 'package:uuid/uuid.dart';
 
-var uuid = Uuid();
-final List entry_data = [
+var uuid = const Uuid();
+final List entryData = [
   {
     "replyCount": randomNumberGenerator(),
     "username": "janedoe12",
     "isVerifiedUser": true,
     "likeCount": randomNumberGenerator(),
-    "entryText": lipsum_text,
+    "entryText": lipsumText,
     "entryId": uuid.v4(),
   },
   {
@@ -18,7 +17,7 @@ final List entry_data = [
     "username": "franzk0",
     "isVerifiedUser": true,
     "likeCount": randomNumberGenerator(),
-    "entryText": short_lipsum_text,
+    "entryText": shortLipsumText,
     "entryId": uuid.v4(),
   },
   {
@@ -26,7 +25,7 @@ final List entry_data = [
     "username": "ari_99",
     "likeCount": randomNumberGenerator(),
     "isVerifiedUser": false,
-    "entryText": short_lipsum_text,
+    "entryText": shortLipsumText,
     "photoAddedPath":
         'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
     "entryId": uuid.v4(),
@@ -36,7 +35,7 @@ final List entry_data = [
     "username": "mustek",
     "isVerifiedUser": false,
     "likeCount": randomNumberGenerator(),
-    "entryText": short_lipsum_text,
+    "entryText": shortLipsumText,
     "photoAddedPath": 'https://media.giphy.com/media/1GlDW1HBD3q2A/giphy.gif',
     "entryId": uuid.v4(),
   }

@@ -1,13 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads_clone/pages/activity_page.dart';
 import 'package:threads_clone/pages/home_page.dart';
 import 'package:threads_clone/pages/search_page.dart';
-import 'package:threads_clone/utils/entry_data.dart';
-import 'package:threads_clone/utils/text_utils.dart';
-import 'package:threads_clone/utils/utils.dart';
-
-import 'components/entry.dart';
-import 'dtos/entry_dto.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     SearchPage(),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+    ActivityPage(),
     Text(
       'Index 2: School',
       style: optionStyle,

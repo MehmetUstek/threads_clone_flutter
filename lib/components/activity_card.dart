@@ -1,23 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads_clone/components/card_button.dart';
+import 'package:threads_clone/styles/color_styles.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 import '../dtos/profile_dto.dart';
-import '../styles/text_styles.dart';
 
-class ProfileCard extends StatefulWidget {
-  const ProfileCard({super.key, required this.profileDTO});
-
+class ActivityCard extends StatelessWidget {
+  const ActivityCard({super.key, required this.profileDTO});
   final ProfileDTO profileDTO;
 
   @override
-  State<ProfileCard> createState() => _EntryState();
-}
-
-class _EntryState extends State<ProfileCard> {
-  @override
   Widget build(BuildContext context) {
-    ProfileDTO profileDTO = widget.profileDTO;
+    ProfileDTO profileDTO = this.profileDTO;
     final String username = profileDTO.username;
     final bool isVerifiedUser = profileDTO.isVerifiedUser;
     final String? profilePhotoPath = profileDTO.profilePhotoPath;
@@ -73,20 +68,11 @@ class _EntryState extends State<ProfileCard> {
                             child: SizedBox(
                               width: bioMaxWidth(context),
                               child: Text(
-                                userBio,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.normal),
+                                "Follow request",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: darkGrey),
                               ),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: usernameTextPadding),
-                            child: Text(
-                              "$followerCount followers",
-                              style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -95,22 +81,29 @@ class _EntryState extends State<ProfileCard> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      right: 20,
+                      right: 5,
                       top: 5,
                       left: 10,
                     ),
                     child: Expanded(
                       flex: 1,
                       child: SizedBox(
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(),
-                          onPressed: () => {},
-                          child: Text(
-                            "Follow",
-                            style: followTextStyle(),
-                          ),
-                        ),
-                      ),
+                          child: CardButton(
+                        buttonTitle: "Confirm",
+                      )),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 20,
+                      top: 5,
+                    ),
+                    child: Expanded(
+                      flex: 1,
+                      child: SizedBox(
+                          child: CardButton(
+                        buttonTitle: "Hide",
+                      )),
                     ),
                   ),
                 ],

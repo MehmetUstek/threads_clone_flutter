@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/dtos/entry_dto.dart';
-import 'package:threads_clone/utils/text_utils.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 class Entry extends StatefulWidget {
   const Entry({super.key, required this.entryDTO});
+
   final EntryDTO entryDTO;
 
   @override
@@ -34,9 +34,9 @@ class _EntryState extends State<Entry> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    child: const Icon(CupertinoIcons.add),
+                  const SizedBox(
                     width: iconWidth,
+                    child: Icon(CupertinoIcons.add),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -49,10 +49,11 @@ class _EntryState extends State<Entry> {
                           children: [
                             Text(
                               username,
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
                             ),
                             if (isVerifiedUser)
-                              Padding(
+                              const Padding(
                                 padding:
                                     EdgeInsets.only(left: blueTickLeftPadding),
                                 child: Icon(
@@ -70,13 +71,14 @@ class _EntryState extends State<Entry> {
                             width: entryMaxWidth(context),
                             child: Text(
                               entryText,
-                              style: TextStyle(fontWeight: FontWeight.normal),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.normal),
                             ),
                           ),
                         ),
                         if (photoAddedPath != null)
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 top: photoPadding, bottom: usernameTextPadding),
                             child: Image.network(photoAddedPath,
                                 width: photoMaxWidth(context)),
@@ -106,16 +108,17 @@ class _EntryState extends State<Entry> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: usernameTextPadding),
+                          padding:
+                              const EdgeInsets.only(top: usernameTextPadding),
                           child: Row(
                             children: [
                               Text(
                                 "$replyCount replies",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.only(left: 5),
                                 child: Icon(
                                   CupertinoIcons.circle_fill,
@@ -124,10 +127,10 @@ class _EntryState extends State<Entry> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 5),
+                                padding: const EdgeInsets.only(left: 5),
                                 child: Text(
                                   "$likeCount likes",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.grey,
                                       fontWeight: FontWeight.bold),
                                 ),

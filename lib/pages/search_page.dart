@@ -36,7 +36,7 @@ class _SearchPageState extends State<SearchPage> {
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.grey[300],
-                    minimumSize: Size.fromHeight(30)),
+                    minimumSize: const Size.fromHeight(30)),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,10 +57,10 @@ class _SearchPageState extends State<SearchPage> {
               )),
           Expanded(
             child: ListView.builder(
-                itemCount: search_data.length,
+                itemCount: searchData.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ProfileCard(
-                    profileDTO: ProfileDTO.fromJson(search_data[index]),
+                    profileDTO: ProfileDTO.fromJson(searchData[index]),
                   );
                 }),
           ),

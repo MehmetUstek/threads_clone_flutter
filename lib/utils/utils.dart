@@ -20,6 +20,8 @@ double photoMaxWidth(context) =>
     MediaQuery.of(context).size.width - textPadding - 10;
 
 int randomNumberGenerator() {
-  Random random = new Random();
+  Random random = Random();
   return random.nextInt(500);
 }
+
+List<String> activityFiltersData = ["All", "Requests", "Replies", "Mentions"];

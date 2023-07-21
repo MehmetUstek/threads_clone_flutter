@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           // and return asynchronous code
           //TODO: Update data when refreshed.
           return Future<void>.value(
-              entry_data.map((i) => EntryDTO.fromJson(i)).toList());
+              entryData.map((i) => EntryDTO.fromJson(i)).toList());
         },
         // This check is used to customize listening to scroll notifications
         // from the widget's children.
@@ -38,10 +38,10 @@ class _HomePageState extends State<HomePage> {
         //   return notification.depth == 1;
         // },
         child: ListView.builder(
-            itemCount: entry_data.length,
+            itemCount: entryData.length,
             itemBuilder: (BuildContext context, int index) {
               return Entry(
-                entryDTO: EntryDTO.fromJson(entry_data[index]),
+                entryDTO: EntryDTO.fromJson(entryData[index]),
               );
             }),
       ),

@@ -1,8 +1,6 @@
 import 'package:threads_clone/utils/utils.dart';
-import 'package:uuid/uuid.dart';
 
-var uuid = Uuid();
-final List search_data = [
+final List searchData = [
   {
     "followerCount": randomNumberGenerator(),
     "username": "janedoe12",
