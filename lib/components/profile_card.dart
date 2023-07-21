@@ -1,0 +1,129 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:threads_clone/utils/utils.dart';
+
+import '../dtos/profile_dto.dart';
+import '../styles/text_styles.dart';
+
+class ProfileCard extends StatefulWidget {
+  const ProfileCard({super.key, required this.profileDTO});
+
+  final ProfileDTO profileDTO;
+
+  @override
+  State<ProfileCard> createState() => _EntryState();
+}
+
+class _EntryState extends State<ProfileCard> {
+  @override
+  Widget build(BuildContext context) {
+    ProfileDTO profileDTO = widget.profileDTO;
+    final String username = profileDTO.username;
+    final bool isVerifiedUser = profileDTO.isVerifiedUser;
+    final String? profilePhotoPath = profileDTO.profilePhotoPath;
+    final String userBio = profileDTO.userBio;
+    final int followerCount = profileDTO.followerCount;
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: InkWell(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: const Icon(CupertinoIcons.add),
+                    width: iconWidth,
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: paddingToTheSides),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                username,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              if (isVerifiedUser)
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: blueTickLeftPadding),
+                                  child: Icon(
+                                    CupertinoIcons.check_mark_circled_solid,
+                                    color: Colors.blue,
+                                    size: 15,
+                                  ),
+                                ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: usernameTextPadding),
+                            child: SizedBox(
+                              width: bioMaxWidth(context),
+                              child: Text(
+                                userBio,
+                                style: TextStyle(fontWeight: FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: usernameTextPadding),
+                            child: Text(
+                              "$followerCount followers",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 20,
+                      top: 5,
+                      left: 10,
+                    ),
+                    child: Expanded(
+                      flex: 1,
+                      child: SizedBox(
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(),
+                          onPressed: () => {},
+                          child: Text(
+                            "Follow",
+                            style: followTextStyle(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Container(
+                  color: Colors.grey.shade300,
+                  width: MediaQuery.of(context).size.width,
+                  height: 1,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

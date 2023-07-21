@@ -1,4 +1,4 @@
-import 'package:threads_clone/components/entry_dto.dart';
+import 'package:threads_clone/dtos/entry_dto.dart';
 import 'package:threads_clone/utils/text_utils.dart';
 import 'package:threads_clone/utils/utils.dart';
 import 'package:uuid/uuid.dart';
