@@ -6,11 +6,11 @@ class CardButton extends StatelessWidget {
   const CardButton(
       {super.key,
       required this.buttonTitle,
-      this.fixedWith = 90,
+      this.fixedWidth = 90,
       this.backgroundColor = Colors.white,
       this.textColor = Colors.black});
   final String buttonTitle;
-  final double fixedWith;
+  final double fixedWidth;
   final Color? backgroundColor;
   final Color textColor;
 
@@ -18,7 +18,7 @@ class CardButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-          fixedSize: Size.fromWidth(fixedWith),
+          fixedSize: Size.fromWidth(fixedWidth),
           backgroundColor: backgroundColor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),

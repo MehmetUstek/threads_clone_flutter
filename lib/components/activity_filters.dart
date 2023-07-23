@@ -21,7 +21,7 @@ class ActivityFilters extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8),
               child: CardButton(
                 buttonTitle: activityFiltersData[index],
-                fixedWith: 110,
+                fixedWidth: 110,
                 backgroundColor: Colors.grey[900],
                 textColor: Colors.white,
               ),

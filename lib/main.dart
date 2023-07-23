@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/pages/activity_page.dart';
 import 'package:threads_clone/pages/home_page.dart';
+import 'package:threads_clone/pages/profile_page.dart';
 import 'package:threads_clone/pages/search_page.dart';
 
 void main() {
@@ -44,10 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
       style: optionStyle,
     ),
     ActivityPage(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    ProfilePage(
+        fullName: "Mehmet Üstek",
+        username: "mehmetustekk",
+        userBio: "Koc University",
+        followerCount: 123),
   ];
 
   void _onItemTapped(int index) {
@@ -91,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
       body: SafeArea(child: _widgetOptions[_selectedIndex]),
+      //TODO: Implement a navigator to keep bottom navigation when new page is pushed.
     );
   }
 }

@@ -23,7 +23,7 @@ class ActivityCard extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: InkWell(
         child: SizedBox(
-          width: MediaQuery.of(context).size.width,
+          width: screenWidth(context),
           child: Column(
             children: [
               Row(
@@ -112,7 +112,7 @@ class ActivityCard extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20),
                 child: Container(
                   color: Colors.grey.shade300,
-                  width: MediaQuery.of(context).size.width,
+                  width: screenWidth(context),
                   height: 1,
                 ),
               ),

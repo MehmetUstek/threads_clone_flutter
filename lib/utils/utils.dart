@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 const double iconWidth = 30;
 const double paddingToTheSides = 10;
@@ -11,13 +11,13 @@ const double blueTickLeftPadding = 3;
 const double iconSize = 21;
 const double iconSpacing = 10;
 
-double entryMaxWidth(context) =>
-    MediaQuery.of(context).size.width - textPadding;
+double screenWidth(context) => MediaQuery.of(context).size.width;
+
+double entryMaxWidth(context) => screenWidth(context) - textPadding;
 
 double bioMaxWidth(context) => 200;
 
-double photoMaxWidth(context) =>
-    MediaQuery.of(context).size.width - textPadding - 10;
+double photoMaxWidth(context) => screenWidth(context) - textPadding - 10;
 
 int randomNumberGenerator() {
   Random random = Random();
@@ -25,3 +25,9 @@ int randomNumberGenerator() {
 }
 
 List<String> activityFiltersData = ["All", "Requests", "Replies", "Mentions"];
+
+void emptyFunction() => {};
+void pushToNewPage(BuildContext context, Widget pushRoute) => Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => pushRoute),
+    );
