@@ -1,16 +1,15 @@
 # threads_clone
 
-Instagram threads clone
+This is my own implementation of Instagram Threads Frontend to reinforce my flutter/dart skills.
 
-## Getting Started
+## Running instructions
 
-This project is a starting point for a Flutter application.
+**To run the code, you should have:**<br /><br />
+Flutter (preferably or newer) 3.10.6<br />
+Dart (preferably or newer) Dart 3.0.6<br />
+Corresponding packages for android or ios development. (e.g Xcode devtools)<br /><br />
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Install packages with:**<br />
+!flutter pub get<br /><br />
+**Run the code(with a simulator or physical device connected):**<br />
+!flutter run<br />
