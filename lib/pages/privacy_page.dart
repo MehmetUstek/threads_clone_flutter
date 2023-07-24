@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/settings_card.dart';
-import '../styles/color_styles.dart';
 import '../utils/settings_options.dart';
 import '../utils/utils.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+class PrivacyPage extends StatelessWidget {
+  const PrivacyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class SettingsPage extends StatelessWidget {
         leadingWidth: 120,
         centerTitle: true,
         title: Text(
-          "Settings",
+          "Privacy",
           style: titleTextStyle(customFontSize: 20),
         ),
         leading: InkWell(
@@ -52,28 +51,16 @@ class SettingsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: screenHeight(context) / 2.8,
+                height: screenHeight(context) / 2,
                 child: ListView.builder(
-                  itemCount: settingOptions.length,
+                  itemCount: privacyOptions.length,
                   itemBuilder: (BuildContext context, int index) {
                     return SettingsCard(
-                      settingsOptions: settingOptions[index],
+                      settingsOptions: privacyOptions[index],
                     );
                   },
                 ),
               ),
-              Container(
-                color: lightGrey,
-                width: screenWidth(context),
-                height: 1,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Text(
-                  "Log out",
-                  style: TextStyle(color: warningColor),
-                ),
-              )
             ],
           ),
         ),

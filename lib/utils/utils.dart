@@ -12,6 +12,7 @@ const double iconSize = 21;
 const double iconSpacing = 10;
 
 double screenWidth(context) => MediaQuery.of(context).size.width;
+double screenHeight(context) => MediaQuery.of(context).size.height;
 
 double entryMaxWidth(context) => screenWidth(context) - textPadding;
 
