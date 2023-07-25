@@ -80,8 +80,17 @@ class _EntryState extends State<Entry> {
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: photoPadding, bottom: usernameTextPadding),
-                            child: Image.network(photoAddedPath,
-                                width: photoMaxWidth(context)),
+                            child:
+                                Image.network(photoAddedPath, fit: BoxFit.fill,
+                                    loadingBuilder: (BuildContext context,
+                                        Widget child,
+                                        ImageChunkEvent? loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                    color: Colors.black),
+                              );
+                            }, width: photoMaxWidth(context)),
                           ),
                         const Padding(
                           padding: EdgeInsets.only(top: usernameTextPadding),

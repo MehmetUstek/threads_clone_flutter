@@ -27,8 +27,14 @@ int randomNumberGenerator() {
 
 List<String> activityFiltersData = ["All", "Requests", "Replies", "Mentions"];
 
+enum ActivityFiltersEnum { All, Requests, Replies, Mentions }
+
 void emptyFunction() => {};
 void pushToNewPage(BuildContext context, Widget pushRoute) => Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => pushRoute),
+    );
+
+void popPage(BuildContext context) => Navigator.pop(
+      context,
     );

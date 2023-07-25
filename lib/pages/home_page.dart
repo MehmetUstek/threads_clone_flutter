@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     return Center(
       child: RefreshIndicator(
         color: Colors.white,
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.black,
 
         onRefresh: () async {
           // Replace this delay with the code to be executed during refresh

@@ -90,6 +90,7 @@ class ActivityCard extends StatelessWidget {
                       child: SizedBox(
                           child: CardButton(
                         buttonTitle: "Confirm",
+                        onPressed: () => {},
                       )),
                     ),
                   ),
@@ -103,6 +104,7 @@ class ActivityCard extends StatelessWidget {
                       child: SizedBox(
                           child: CardButton(
                         buttonTitle: "Hide",
+                        onPressed: () => {},
                       )),
                     ),
                   ),

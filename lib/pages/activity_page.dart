@@ -6,6 +6,7 @@ import 'package:threads_clone/styles/text_styles.dart';
 import '../components/activity_card.dart';
 import '../dtos/profile_dto.dart';
 import '../utils/search_data.dart';
+import '../utils/utils.dart';
 
 class ActivityPage extends StatefulWidget {
   const ActivityPage({Key? key}) : super(key: key);
@@ -15,6 +16,11 @@ class ActivityPage extends StatefulWidget {
 }
 
 class _ActivityPagePageState extends State<ActivityPage> {
+  ActivityFiltersEnum activityFiltersEnum = ActivityFiltersEnum.All;
+  void setAppliedFilter(ActivityFiltersEnum newFilter) => setState(() {
+        activityFiltersEnum = newFilter;
+      });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +36,9 @@ class _ActivityPagePageState extends State<ActivityPage> {
               style: header(),
             ),
           ),
-          ActivityFilters(),
+          ActivityFilters(
+              appliedFilter: activityFiltersEnum,
+              setAppliedFilter: setAppliedFilter),
           Expanded(
             child: ListView.builder(
                 itemCount: searchData.length,

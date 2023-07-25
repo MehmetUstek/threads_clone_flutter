@@ -56,6 +56,8 @@ class _SearchPageState extends State<SearchPage> {
                     ]),
               )),
           Expanded(
+            //TODO: Remove expanded, and replace it with all screen listview
+
             child: ListView.builder(
                 itemCount: searchData.length,
                 itemBuilder: (BuildContext context, int index) {

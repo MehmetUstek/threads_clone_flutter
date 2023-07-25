@@ -5,6 +5,7 @@ import 'package:threads_clone/pages/privacy_page.dart';
 import 'package:threads_clone/pages/settings_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
+import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
 import '../utils/utils.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -88,10 +89,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 CardButton(
                   buttonTitle: 'Edit Profile',
                   fixedWidth: screenWidth(context) / 2.4,
+                  onPressed: () => editProfileBottomSheet(context),
                 ),
                 CardButton(
                   buttonTitle: 'Share Profile',
                   fixedWidth: screenWidth(context) / 2.4,
+                  onPressed: () => editProfileBottomSheet(context),
                 ),
               ],
             ),
