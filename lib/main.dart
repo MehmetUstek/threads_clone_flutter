@@ -4,6 +4,9 @@ import 'package:threads_clone/pages/activity_page.dart';
 import 'package:threads_clone/pages/home_page.dart';
 import 'package:threads_clone/pages/profile_page.dart';
 import 'package:threads_clone/pages/search_page.dart';
+import 'package:threads_clone/pages/splash_screen.dart';
+
+import 'components/bottomSheets/new_thread_bottomSheet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,15 +22,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const SplashScreen(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -37,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     SearchPage(),
     Text(
@@ -53,9 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index != 2) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    } else {
+      newThreadBottomSheet(context);
+    }
   }
 
   @override

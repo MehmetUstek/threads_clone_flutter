@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:threads_clone/components/card_button.dart';
 import 'package:threads_clone/pages/privacy_page.dart';
 import 'package:threads_clone/pages/settings_page.dart';
@@ -29,6 +30,9 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool isThreadTab = true;
+  void sharePressed() {
+    Share.share('Mehmet Ustek (@mehmetustekk) on ...');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 CardButton(
                   buttonTitle: 'Share Profile',
                   fixedWidth: screenWidth(context) / 2.4,
-                  onPressed: () => editProfileBottomSheet(context),
+                  onPressed: sharePressed,
                 ),
               ],
             ),

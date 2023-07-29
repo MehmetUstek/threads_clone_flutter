@@ -12,8 +12,15 @@ class ExtendedCard {
   });
 }
 
-class SettingsCardDTO {
+abstract class OptionsCardDTO {
+  final String cardTitle;
+
+  OptionsCardDTO(this.cardTitle);
+}
+
+class SettingsCardDTO implements OptionsCardDTO {
   final IconData? iconName;
+  @override
   final String cardTitle;
   final Widget? trailingIcon;
   final Function? onClick;
@@ -22,6 +29,20 @@ class SettingsCardDTO {
   SettingsCardDTO(
       {this.iconName,
       required this.cardTitle,
+      this.trailingIcon,
+      this.onClick,
+      this.extendedCard});
+}
+
+class PrivacySubOptionsDTO implements OptionsCardDTO {
+  @override
+  final String cardTitle;
+  final Widget? trailingIcon;
+  final Function? onClick;
+  final ExtendedCard? extendedCard;
+
+  PrivacySubOptionsDTO(
+      {required this.cardTitle,
       this.trailingIcon,
       this.onClick,
       this.extendedCard});

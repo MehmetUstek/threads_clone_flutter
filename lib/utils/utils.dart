@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../styles/color_styles.dart';
+
 const double iconWidth = 30;
 const double paddingToTheSides = 10;
 const double textPadding = paddingToTheSides + iconWidth + 15;
@@ -37,4 +39,11 @@ void pushToNewPage(BuildContext context, Widget pushRoute) => Navigator.push(
 
 void popPage(BuildContext context) => Navigator.pop(
       context,
+    );
+
+Widget lineContainer(BuildContext context, {double? width, Color? color}) =>
+    Container(
+      color: color ?? lightGrey,
+      width: width ?? screenWidth(context),
+      height: 1,
     );

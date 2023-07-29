@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:threads_clone/styles/color_styles.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/profile_card.dart';
@@ -15,6 +13,13 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  late TextEditingController textController;
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,29 +36,15 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.grey[300],
-                    minimumSize: const Size.fromHeight(30)),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        CupertinoIcons.search,
-                        color: darkGrey,
-                        size: 22,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          "Search",
-                          style: smallText(),
-                        ),
-                      )
-                    ]),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: CupertinoSearchTextField(
+                controller: textController,
+                placeholder: 'Search',
+                enabled: true,
+                onTap: () => {},
+
+                ///TODO: Transition
+                backgroundColor: CupertinoColors.tertiarySystemFill,
               )),
           Expanded(
             //TODO: Remove expanded, and replace it with all screen listview
