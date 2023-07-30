@@ -2,6 +2,13 @@
 
 This is my own implementation of Instagram Threads Frontend to reinforce my flutter/dart skills.
 
+Still under development.<br/>
+▒▒▒▒▒▒▒▒▒▒ 0%<br/>
+█▒▒▒▒▒▒▒▒▒ 10%<br/>
+██▒▒▒▒▒▒▒▒ 20%<br/>
+███▒▒▒▒▒▒▒ 30%<br/>
+████▒▒▒▒▒▒ 40%<br/><br/>
+
 ## Running instructions
 
 **To run the code, you should have:**<br /><br />
