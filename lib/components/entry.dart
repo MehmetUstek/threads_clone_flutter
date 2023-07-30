@@ -86,7 +86,7 @@ class _EntryState extends State<Entry> {
                                         Widget child,
                                         ImageChunkEvent? loadingProgress) {
                               if (loadingProgress == null) return child;
-                              return Center(
+                              return const Center(
                                 child: CircularProgressIndicator(
                                     color: Colors.black),
                               );

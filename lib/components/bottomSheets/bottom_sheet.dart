@@ -15,7 +15,7 @@ void bottomSheet({
         isScrollControlled: true,
         backgroundColor: Colors.white,
         useSafeArea: true,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(8),
           ),

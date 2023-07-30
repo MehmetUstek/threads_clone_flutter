@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:threads_clone/components/card_button.dart';
 import 'package:threads_clone/pages/reusable_options_page.dart';
 import 'package:threads_clone/pages/settings_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
+import '../components/share_sheet.dart';
 import '../utils/settings_options.dart';
 import '../utils/utils.dart';
 
@@ -31,14 +31,11 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool isThreadTab = true;
-  void sharePressed() {
-    Share.share('Mehmet Ustek (@mehmetustekk) on ...');
-  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -48,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  child: Icon(CupertinoIcons.lock),
+                  child: const Icon(CupertinoIcons.lock),
                   onTap: () => {
                     pushToNewPage(
                         context,
@@ -59,42 +56,42 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                 ),
                 InkWell(
-                  child: Icon(Icons.menu),
+                  child: const Icon(Icons.menu),
                   onTap: () => {pushToNewPage(context, const SettingsPage())},
                 ),
               ],
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 30, left: 15),
+            padding: const EdgeInsets.only(top: 30, left: 15),
             child: Text(
               widget.fullName,
               style: smallHeader(),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10, left: 15),
+            padding: const EdgeInsets.only(top: 10, left: 15),
             child: Text(
               widget.username,
               style: usernameTextStyle(),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10, left: 15),
+            padding: const EdgeInsets.only(top: 10, left: 15),
             child: Text(
               widget.userBio,
               style: usernameTextStyle(),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20, left: 15),
+            padding: const EdgeInsets.only(top: 20, left: 15),
             child: Text(
               "${widget.followerCount} followers",
               style: smallText(),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 40, left: 15, right: 15),
+            padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -106,18 +103,21 @@ class _ProfilePageState extends State<ProfilePage> {
                 CardButton(
                   buttonTitle: 'Share Profile',
                   fixedWidth: screenWidth(context) / 2.4,
-                  onPressed: sharePressed,
+                  onPressed: () =>
+                      sharePressed('Mehmet Ustek (@mehmetustekk) on ...'),
                 ),
               ],
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
+                  onTap: () => {setState(() => isThreadTab = true)},
+                  splashFactory: NoSplash.splashFactory,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -140,10 +140,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ],
                   ),
-                  onTap: () => {setState(() => isThreadTab = true)},
-                  splashFactory: NoSplash.splashFactory,
                 ),
                 InkWell(
+                  onTap: () => {setState(() => isThreadTab = false)},
+                  splashFactory: NoSplash.splashFactory,
                   child: Column(
                     children: [
                       Text(
@@ -161,8 +161,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ],
                   ),
-                  onTap: () => {setState(() => isThreadTab = false)},
-                  splashFactory: NoSplash.splashFactory,
                 ),
               ],
             ),

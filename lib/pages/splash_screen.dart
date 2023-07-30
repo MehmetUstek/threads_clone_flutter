@@ -31,7 +31,7 @@ class SplashScreen extends StatelessWidget {
               if (state is Loaded) {
                 return const MyHomePage();
               } else {
-                return SplashScreenWidget();
+                return const SplashScreenWidget();
               }
             },
           ),

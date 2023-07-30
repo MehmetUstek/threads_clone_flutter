@@ -4,6 +4,7 @@ import 'package:threads_clone/pages/reusable_options_page.dart';
 import 'package:threads_clone/styles/color_styles.dart';
 import 'package:threads_clone/utils/utils.dart';
 
+import '../components/share_sheet.dart';
 import '../dtos/extended_card_dto.dart';
 import '../dtos/settings_card_dto.dart';
 import '../styles/icon_styles.dart';
@@ -125,32 +126,48 @@ final List<SettingsCardDTO> mentionsOptions = [
             "Choose who can @mention you to link your profile in their threads, replies or bio. WHen people try to @mention you, they'll see you don't allow @mentions"),
   ),
   SettingsCardDTO(
-      cardTitle: "Everyone",
-      trailingIcon: Icon(CupertinoIcons.check_mark_circled_solid)),
+    cardTitle: "Everyone",
+    trailingIcon: const Icon(CupertinoIcons.check_mark_circled_solid),
+  ),
   SettingsCardDTO(
-      cardTitle: "Profiles you follow",
-      trailingIcon: Icon(CupertinoIcons.circle)),
+    cardTitle: "Profiles you follow",
+    trailingIcon: const Icon(CupertinoIcons.circle),
+  ),
   SettingsCardDTO(
-      cardTitle: "No one", trailingIcon: Icon(CupertinoIcons.circle)),
+    cardTitle: "No one",
+    trailingIcon: const Icon(CupertinoIcons.circle),
+  ),
 ];
 
 final List<SettingsCardDTO> followInviteFriendsOptions = [
   SettingsCardDTO(
-      cardTitle: "Follow accounts from Instagram",
-      iconName: FontAwesomeIcons.instagram),
+    cardTitle: "Follow accounts from Instagram",
+    iconName: FontAwesomeIcons.instagram,
+  ),
   SettingsCardDTO(
-      cardTitle: "Invite friends by WhatsApp",
-      iconName: FontAwesomeIcons.whatsapp),
+    cardTitle: "Invite friends by WhatsApp",
+    iconName: FontAwesomeIcons.whatsapp,
+  ),
   SettingsCardDTO(
-      cardTitle: "Invite friends by SMS", iconName: FontAwesomeIcons.message),
+    cardTitle: "Invite friends by SMS",
+    iconName: FontAwesomeIcons.message,
+  ),
   SettingsCardDTO(
-      cardTitle: "Invite friends by email", iconName: CupertinoIcons.mail),
+    cardTitle: "Invite friends by email",
+    iconName: CupertinoIcons.mail,
+  ),
   SettingsCardDTO(
-      cardTitle: "Invite friends by...", iconName: CupertinoIcons.share),
+      cardTitle: "Invite friends by...",
+      iconName: CupertinoIcons.share,
+      onClick: () => sharePressed(
+          "I'm on Threads as @mehmetustekk. Install the app to follow my threads and replies.")),
 ];
 
 final List<SettingsCardDTO> notificationsOptions = [
-  SettingsCardDTO(cardTitle: "Push notifications", titleBold: true),
+  SettingsCardDTO(
+    cardTitle: "Push notifications",
+    titleBold: true,
+  ),
   SettingsCardDTO(
     cardTitle: "Pause all",
   ),

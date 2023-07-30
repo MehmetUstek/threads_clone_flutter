@@ -54,7 +54,8 @@ class SettingsCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(settingsOptions.cardTitle,
-                                style: TextStyle(fontWeight: FontWeight.bold)),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
                             Text(settingsOptions.extendedCard!.cardSubtitle),
                           ],
                         )

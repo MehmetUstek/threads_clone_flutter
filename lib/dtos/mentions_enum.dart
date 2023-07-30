@@ -1,1 +1,1 @@
-enum MentionsEnum { everyone, you_follow, no_one }
+enum MentionsEnum { everyone, youFollow, noOne }

@@ -38,15 +38,15 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    SearchPage(),
-    Text(
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomePage(),
+    const SearchPage(),
+    const Text(
       'Index 2: School',
       style: optionStyle,
     ),
-    ActivityPage(),
-    ProfilePage(
+    const ActivityPage(),
+    const ProfilePage(
         fullName: "Mehmet Üstek",
         username: "mehmetustekk",
         userBio: "Koc University",

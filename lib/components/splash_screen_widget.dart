@@ -5,6 +5,8 @@ import '../bloc/splash_screen_bloc/splash_screen_bloc.dart';
 import '../bloc/splash_screen_bloc/splash_screen_event.dart';
 
 class SplashScreenWidget extends StatefulWidget {
+  const SplashScreenWidget({super.key});
+
   @override
   _SplashScreenWidgetState createState() => _SplashScreenWidgetState();
 }
