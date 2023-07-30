@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:threads_clone/components/scaffold_with_name.dart';
 
 import '../components/settings_card.dart';
-import '../utils/settings_options.dart';
+import '../dtos/settings_card_dto.dart';
 import '../utils/utils.dart';
 
 class OptionsPage extends StatelessWidget {
@@ -19,11 +19,10 @@ class OptionsPage extends StatelessWidget {
       pageName: pageName,
       body: Padding(
         padding: EdgeInsets.only(top: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ListView(
           children: [
             SizedBox(
-              height: screenHeight(context) / 2,
+              height: screenHeight(context),
               child: ListView.builder(
                 itemCount: optionsData.length,
                 itemBuilder: (BuildContext context, int index) {

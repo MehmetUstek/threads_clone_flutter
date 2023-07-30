@@ -38,6 +38,7 @@ dependencies:
   uuid: ^3.0.7
   share_plus: ^7.0.2
   flutter_bloc: ^8.1.3
+  font_awesome_flutter: ^10.5.0
 
 dev_dependencies:
   flutter_test:

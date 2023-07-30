@@ -22,10 +22,10 @@ class SettingsPage extends StatelessWidget {
             SizedBox(
               height: screenHeight(context) / 2.8,
               child: ListView.builder(
-                itemCount: settingOptions.length,
+                itemCount: settingOptions(context).length,
                 itemBuilder: (BuildContext context, int index) {
                   return SettingsCard(
-                    settingsOptions: settingOptions[index],
+                    settingsOptions: settingOptions(context)[index],
                   );
                 },
               ),

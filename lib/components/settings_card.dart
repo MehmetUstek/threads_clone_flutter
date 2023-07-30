@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads_clone/utils/utils.dart';
 
-import '../utils/settings_options.dart';
+import '../dtos/settings_card_dto.dart';
 
 class SettingsCard extends StatelessWidget {
   const SettingsCard({super.key, required this.settingsOptions});
@@ -60,6 +60,10 @@ class SettingsCard extends StatelessWidget {
                         )
                       : Text(
                           settingsOptions.cardTitle,
+                          style: TextStyle(
+                              fontWeight: settingsOptions.titleBold ?? false
+                                  ? FontWeight.bold
+                                  : FontWeight.normal),
                         ),
         ),
       ),

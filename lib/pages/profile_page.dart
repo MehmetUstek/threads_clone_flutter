@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:threads_clone/components/card_button.dart';
-import 'package:threads_clone/pages/privacy_page.dart';
+import 'package:threads_clone/pages/reusable_options_page.dart';
 import 'package:threads_clone/pages/settings_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
+import '../utils/settings_options.dart';
 import '../utils/utils.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -48,7 +49,14 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 InkWell(
                   child: Icon(CupertinoIcons.lock),
-                  onTap: () => {pushToNewPage(context, const PrivacyPage())},
+                  onTap: () => {
+                    pushToNewPage(
+                        context,
+                        ReusableOptionsPage(
+                          pageName: "Privacy",
+                          optionsData: privacyOptions(context),
+                        ))
+                  },
                 ),
                 InkWell(
                   child: Icon(Icons.menu),
