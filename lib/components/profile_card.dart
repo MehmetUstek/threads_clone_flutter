@@ -40,7 +40,7 @@ class _EntryState extends State<ProfileCard> {
                     child: Icon(CupertinoIcons.add),
                   ),
                   Expanded(
-                    flex: 3,
+                    flex: 2,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: paddingToTheSides),
@@ -99,16 +99,13 @@ class _EntryState extends State<ProfileCard> {
                       top: 5,
                       left: 10,
                     ),
-                    child: Expanded(
-                      flex: 1,
-                      child: SizedBox(
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(),
-                          onPressed: () => {},
-                          child: Text(
-                            "Follow",
-                            style: followTextStyle(),
-                          ),
+                    child: SizedBox(
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(),
+                        onPressed: () => {},
+                        child: Text(
+                          "Follow",
+                          style: followTextStyle(),
                         ),
                       ),
                     ),

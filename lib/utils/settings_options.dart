@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:threads_clone/pages/reusable_options_page.dart';
 import 'package:threads_clone/styles/color_styles.dart';
 import 'package:threads_clone/utils/utils.dart';
 
+import '../components/options_page.dart';
 import '../components/share_sheet.dart';
 import '../dtos/extended_card_dto.dart';
 import '../dtos/settings_card_dto.dart';
@@ -15,7 +15,7 @@ List<SettingsCardDTO> settingOptions(BuildContext context) => [
         cardTitle: "Follow and invite friends",
         onClick: () => pushToNewPage(
             context,
-            ReusableOptionsPage(
+            OptionsPage(
               pageName: "Mentions",
               optionsData: followInviteFriendsOptions,
             )),
@@ -25,7 +25,7 @@ List<SettingsCardDTO> settingOptions(BuildContext context) => [
         cardTitle: "Notifications",
         onClick: () => pushToNewPage(
             context,
-            ReusableOptionsPage(
+            OptionsPage(
               pageName: "Notifications",
               optionsData: notificationsOptions,
             )),
@@ -35,7 +35,7 @@ List<SettingsCardDTO> settingOptions(BuildContext context) => [
         cardTitle: "Privacy",
         onClick: () => pushToNewPage(
             context,
-            ReusableOptionsPage(
+            OptionsPage(
               pageName: "Privacy",
               optionsData: privacyOptions(context),
             )),
@@ -45,7 +45,7 @@ List<SettingsCardDTO> settingOptions(BuildContext context) => [
         cardTitle: "Account",
         onClick: () => pushToNewPage(
             context,
-            ReusableOptionsPage(
+            OptionsPage(
               pageName: "Account",
               optionsData: accountOptions,
             )),
@@ -55,7 +55,7 @@ List<SettingsCardDTO> settingOptions(BuildContext context) => [
         cardTitle: "Help",
         onClick: () => pushToNewPage(
             context,
-            ReusableOptionsPage(
+            OptionsPage(
               pageName: "Help",
               optionsData: helpOptions,
             )),
@@ -65,7 +65,7 @@ List<SettingsCardDTO> settingOptions(BuildContext context) => [
         cardTitle: "About",
         onClick: () => pushToNewPage(
             context,
-            ReusableOptionsPage(
+            OptionsPage(
               pageName: "About",
               optionsData: aboutOptions,
             )),
@@ -82,7 +82,7 @@ List<SettingsCardDTO> privacyOptions(BuildContext context) => [
           cardTitle: "Mentions",
           onClick: () => pushToNewPage(
               context,
-              ReusableOptionsPage(
+              OptionsPage(
                 pageName: "Mentions",
                 optionsData: mentionsOptions,
               )),

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/components/card_button.dart';
-import 'package:threads_clone/pages/reusable_options_page.dart';
 import 'package:threads_clone/pages/settings_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
+import '../components/options_page.dart';
 import '../components/share_sheet.dart';
 import '../utils/settings_options.dart';
 import '../utils/utils.dart';
@@ -49,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   onTap: () => {
                     pushToNewPage(
                         context,
-                        ReusableOptionsPage(
+                        OptionsPage(
                           pageName: "Privacy",
                           optionsData: privacyOptions(context),
                         ))

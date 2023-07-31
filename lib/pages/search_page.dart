@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/profile_card.dart';
 import '../dtos/profile_dto.dart';
+import '../styles/text_styles.dart';
 import '../utils/search_data.dart';
 
 class SearchPage extends StatefulWidget {
@@ -46,9 +46,7 @@ class _SearchPageState extends State<SearchPage> {
                 ///TODO: Transition
                 backgroundColor: CupertinoColors.tertiarySystemFill,
               )),
-          Expanded(
-            //TODO: Remove expanded, and replace it with all screen listview
-
+          Flexible(
             child: ListView.builder(
                 itemCount: searchData.length,
                 itemBuilder: (BuildContext context, int index) {

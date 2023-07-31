@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/text_styles.dart';
+import '../utils/utils.dart';
 
 class ScaffoldWithName extends StatelessWidget {
   const ScaffoldWithName({Key? key, required this.body, required this.pageName})
@@ -11,39 +12,36 @@ class ScaffoldWithName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leadingWidth: 120,
-          centerTitle: true,
-          title: Text(
-            pageName,
-            style: titleTextStyle(customFontSize: 20),
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          // Try removing opacity to observe the lack of a blur effect and of sliding content.
+
+          leading: Align(
+            widthFactor: 1.0,
+            alignment: Alignment.center,
+            child: Material(
+              child: InkWell(
+                  onTap: () => popPage(context),
+                  child: Text("Cancel",
+                      style: normalTextStyle(customFontSize: 14))),
+            ),
           ),
-          leading: InkWell(
-            onTap: () => Navigator.pop(context),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 5),
-              child: Wrap(
-                alignment: WrapAlignment.start,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                runAlignment: WrapAlignment.center,
-                spacing: 5,
-                children: [
-                  const Icon(
-                    CupertinoIcons.back,
-                    color: Colors.black,
-                  ),
-                  Text(
-                    "Back",
-                    style: normalTextStyle(),
-                  )
-                ],
+
+          middle: Center(child: Text(pageName)),
+          trailing: Align(
+            widthFactor: 1.0,
+            alignment: Alignment.center,
+            child: Material(
+              child: InkWell(
+                onTap: () => popPage(context), //TODO: Do something.
+                child: Text("Done",
+                    style:
+                        boldTextStyle(color: Colors.blue, customFontSize: 14)),
               ),
             ),
           ),
         ),
         backgroundColor: Colors.white,
-        body: SafeArea(child: body));
+        child: SafeArea(child: Material(child: body)));
   }
 }

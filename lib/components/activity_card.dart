@@ -85,28 +85,22 @@ class ActivityCard extends StatelessWidget {
                       top: 5,
                       left: 10,
                     ),
-                    child: Expanded(
-                      flex: 1,
-                      child: SizedBox(
-                          child: CardButton(
-                        buttonTitle: "Confirm",
-                        onPressed: () => {},
-                      )),
-                    ),
+                    child: SizedBox(
+                        child: CardButton(
+                      buttonTitle: "Confirm",
+                      onPressed: () => {},
+                    )),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                       right: 20,
                       top: 5,
                     ),
-                    child: Expanded(
-                      flex: 1,
-                      child: SizedBox(
-                          child: CardButton(
-                        buttonTitle: "Hide",
-                        onPressed: () => {},
-                      )),
-                    ),
+                    child: SizedBox(
+                        child: CardButton(
+                      buttonTitle: "Hide",
+                      onPressed: () => {},
+                    )),
                   ),
                 ],
               ),
