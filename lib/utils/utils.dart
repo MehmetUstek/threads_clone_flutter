@@ -16,11 +16,13 @@ const double iconSpacing = 10;
 double screenWidth(context) => MediaQuery.of(context).size.width;
 double screenHeight(context) => MediaQuery.of(context).size.height;
 
-double entryMaxWidth(context) => screenWidth(context) - textPadding;
+double entryMaxWidth(context) =>
+    screenWidth(context) - textPadding - paddingToTheSides * 2;
 
 double bioMaxWidth(context) => 200;
 
-double photoMaxWidth(context) => screenWidth(context) - textPadding - 10;
+double photoMaxWidth(context) =>
+    screenWidth(context) - textPadding - paddingToTheSides * 2;
 
 int randomNumberGenerator() {
   Random random = Random();

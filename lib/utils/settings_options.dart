@@ -96,13 +96,27 @@ List<SettingsCardDTO> privacyOptions(BuildContext context) => [
             ],
           )),
       SettingsCardDTO(
-          iconName: CupertinoIcons.bell_slash,
-          cardTitle: "Muted",
-          trailingIcon: rightChevronIcon),
+        iconName: CupertinoIcons.bell_slash,
+        cardTitle: "Muted",
+        trailingIcon: rightChevronIcon,
+        onClick: () => pushToNewPage(
+            context,
+            OptionsPage(
+              pageName: "Muted",
+              optionsData: [],
+            )),
+      ),
       SettingsCardDTO(
-          iconName: CupertinoIcons.eye_slash,
-          cardTitle: "Hidden Words",
-          trailingIcon: rightChevronIcon),
+        iconName: CupertinoIcons.eye_slash,
+        cardTitle: "Hidden Words",
+        trailingIcon: rightChevronIcon,
+        onClick: () => pushToNewPage(
+            context,
+            OptionsPage(
+              pageName: "Hidden Words",
+              optionsData: hiddenWordsOptions,
+            )),
+      ),
       SettingsCardDTO(
           iconName: CupertinoIcons.person_2,
           cardTitle: "Profiles you follow",
@@ -136,6 +150,22 @@ final List<SettingsCardDTO> mentionsOptions = [
   SettingsCardDTO(
     cardTitle: "No one",
     trailingIcon: const Icon(CupertinoIcons.circle),
+  ),
+];
+final List<SettingsCardDTO> hiddenWordsOptions = [
+  SettingsCardDTO(
+    cardTitle: "Offensive words and phrases",
+    extendedCard: ExtendedCard(
+        cardTitleBold: true,
+        cardSubtitle:
+            "Hide replies that contain offensive words, phrases or emoji."),
+  ),
+  SettingsCardDTO(
+    cardTitle: "Custom words and phrases",
+    extendedCard: ExtendedCard(
+        cardTitleBold: true,
+        cardSubtitle:
+            "Hide replies that you don't want to see by creating a custom list of words, phrases and emoji."),
   ),
 ];
 

@@ -12,8 +12,13 @@ void newThreadBottomSheet(BuildContext context) => bottomSheet(
           Padding(
             padding: const EdgeInsets.only(top: 50),
             child: ActivityCard(
-              profileDTO:
-                  ProfileDTO(followerCount: 10, username: "a", userBio: "a"),
+              profileDTO: ProfileDTO(
+                  followerCount: 10,
+                  username: "a",
+                  userBio: "a",
+                  firstName: 'Jane',
+                  lastName: "Doe",
+                  initials: "JD"),
             ),
           )
         ]);

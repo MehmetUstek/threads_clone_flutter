@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 import '../dtos/profile_dto.dart';
@@ -22,6 +23,7 @@ class _EntryState extends State<ProfileCard> {
     final bool isVerifiedUser = profileDTO.isVerifiedUser;
     final String? profilePhotoPath = profileDTO.profilePhotoPath;
     final String userBio = profileDTO.userBio;
+    final String initials = profileDTO.initials;
     final int followerCount = profileDTO.followerCount;
 
     return Padding(
@@ -35,9 +37,8 @@ class _EntryState extends State<ProfileCard> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    width: iconWidth,
-                    child: Icon(CupertinoIcons.add),
+                  ProfileCardAvatar(
+                    initials: initials,
                   ),
                   Expanded(
                     flex: 2,

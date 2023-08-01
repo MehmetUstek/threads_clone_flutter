@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/dtos/entry_dto.dart';
 import 'package:threads_clone/utils/utils.dart';
 
@@ -19,6 +20,7 @@ class _EntryState extends State<Entry> {
     final int replyCount = entryDTO.replyCount;
     final int likeCount = entryDTO.likeCount;
     final String username = entryDTO.username;
+    final String initials = entryDTO.initials;
     final bool isVerifiedUser = entryDTO.isVerifiedUser;
     final String entryText = entryDTO.entryText;
     final String? photoAddedPath = entryDTO.photoAddedPath;
@@ -34,10 +36,7 @@ class _EntryState extends State<Entry> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    width: iconWidth,
-                    child: Icon(CupertinoIcons.add),
-                  ),
+                  ProfileCardAvatar(initials: initials),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: paddingToTheSides),

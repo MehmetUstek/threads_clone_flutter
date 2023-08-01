@@ -27,19 +27,22 @@ class ScaffoldWithName extends StatelessWidget {
             ),
           ),
 
-          middle: Center(child: Text(pageName)),
-          trailing: Align(
-            widthFactor: 1.0,
-            alignment: Alignment.center,
-            child: Material(
-              child: InkWell(
-                onTap: () => popPage(context), //TODO: Do something.
-                child: Text("Done",
-                    style:
-                        boldTextStyle(color: Colors.blue, customFontSize: 14)),
-              ),
-            ),
-          ),
+          middle: Align(
+              widthFactor: 1.0,
+              alignment: Alignment.center,
+              child: Text(pageName)),
+          // trailing: Align(
+          //   widthFactor: 1.0,
+          //   alignment: Alignment.center,
+          //   child: Material(
+          //     child: InkWell(
+          //       onTap: () => popPage(context), //TODO: Do something.
+          //       child: Text("Done",
+          //           style:
+          //               boldTextStyle(color: Colors.blue, customFontSize: 14)),
+          //     ),
+          //   ),
+          // ),
         ),
         backgroundColor: Colors.white,
         child: SafeArea(child: Material(child: body)));

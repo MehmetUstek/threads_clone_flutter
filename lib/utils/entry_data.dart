@@ -11,6 +11,8 @@ final List entryData = [
     "likeCount": randomNumberGenerator(),
     "entryText": lipsumText,
     "entryId": uuid.v4(),
+    "firstName": "Jane",
+    "lastName": "Doe"
   },
   {
     "replyCount": randomNumberGenerator(),
@@ -19,6 +21,8 @@ final List entryData = [
     "likeCount": randomNumberGenerator(),
     "entryText": shortLipsumText,
     "entryId": uuid.v4(),
+    "firstName": "Franz",
+    "lastName": "K"
   },
   {
     "replyCount": randomNumberGenerator(),
@@ -29,6 +33,8 @@ final List entryData = [
     "photoAddedPath":
         'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
     "entryId": uuid.v4(),
+    "firstName": "Ari",
+    "lastName": "A"
   },
   {
     "replyCount": randomNumberGenerator(),
@@ -38,5 +44,7 @@ final List entryData = [
     "entryText": shortLipsumText,
     "photoAddedPath": 'https://media.giphy.com/media/1GlDW1HBD3q2A/giphy.gif',
     "entryId": uuid.v4(),
+    "firstName": "Mehmet",
+    "lastName": "Ustek"
   }
 ];
