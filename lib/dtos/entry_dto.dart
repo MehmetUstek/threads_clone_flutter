@@ -9,12 +9,14 @@ class EntryDTO {
   final String firstName;
   final String lastName;
   final String initials;
+  final String? profilePhotoPath;
 
   EntryDTO(
       {required this.replyCount,
       required this.likeCount,
       this.isVerifiedUser = false,
       this.photoAddedPath,
+      this.profilePhotoPath,
       required this.username,
       required this.entryText,
       required this.entryId,
@@ -28,6 +30,7 @@ class EntryDTO {
         isVerifiedUser = json['isVerifiedUser'],
         entryText = json['entryText'],
         photoAddedPath = json['photoAddedPath'],
+        profilePhotoPath = json['profilePhotoPath'],
         entryId = json['entryId'],
         firstName = json['firstName'],
         lastName = json['lastName'],

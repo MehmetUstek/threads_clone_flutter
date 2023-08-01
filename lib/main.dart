@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads_clone/pages/activity_page.dart';
 import 'package:threads_clone/pages/home_page.dart';
 import 'package:threads_clone/pages/profile_page.dart';
@@ -47,10 +48,13 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     const ActivityPage(),
     const ProfilePage(
-        fullName: "Mehmet Üstek",
-        username: "mehmetustekk",
-        userBio: "Koc University",
-        followerCount: 123),
+      fullName: "Mehmet Üstek",
+      username: "mehmetustekk",
+      userBio: "Koc University",
+      followerCount: 123,
+      profilePhotoPath:
+          "https://avatars.githubusercontent.com/u/53303474?s=400&u=1dc04b3eb1ac41e765f0f2dd1f9ce717b10122f0&v=4",
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -73,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.house_alt_fill),
+            icon: Icon(FontAwesomeIcons.house),
             label: 'Home',
           ),
           BottomNavigationBarItem(
@@ -81,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.square_pencil),
+            icon: Icon(FontAwesomeIcons.penToSquare),
             label: 'Post',
           ),
           BottomNavigationBarItem(

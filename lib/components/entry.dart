@@ -4,6 +4,8 @@ import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/dtos/entry_dto.dart';
 import 'package:threads_clone/utils/utils.dart';
 
+import '../pages/zoom_media_page.dart';
+
 class Entry extends StatefulWidget {
   const Entry({super.key, required this.entryDTO});
 
@@ -24,6 +26,7 @@ class _EntryState extends State<Entry> {
     final bool isVerifiedUser = entryDTO.isVerifiedUser;
     final String entryText = entryDTO.entryText;
     final String? photoAddedPath = entryDTO.photoAddedPath;
+    final String? profilePhotoPath = entryDTO.profilePhotoPath;
 
     return Padding(
       padding: const EdgeInsets.only(top: 20),
@@ -36,7 +39,10 @@ class _EntryState extends State<Entry> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProfileCardAvatar(initials: initials),
+                  ProfileCardAvatar(
+                    initials: initials,
+                    profilePhotoPath: profilePhotoPath,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: paddingToTheSides),
@@ -79,17 +85,24 @@ class _EntryState extends State<Entry> {
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: photoPadding, bottom: usernameTextPadding),
-                            child:
-                                Image.network(photoAddedPath, fit: BoxFit.fill,
-                                    loadingBuilder: (BuildContext context,
-                                        Widget child,
-                                        ImageChunkEvent? loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return const Center(
-                                child: CircularProgressIndicator(
-                                    color: Colors.black),
-                              );
-                            }, width: photoMaxWidth(context)),
+                            child: InkWell(
+                              onTap: () => pushToNewPage(
+                                  context,
+                                  ZoomMediaPage(
+                                    isMediaCircular: false,
+                                    mediaPath: photoAddedPath,
+                                  )),
+                              child: Image.network(photoAddedPath,
+                                  fit: BoxFit.fill, loadingBuilder:
+                                      (BuildContext context, Widget child,
+                                          ImageChunkEvent? loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return const Center(
+                                  child: CircularProgressIndicator(
+                                      color: Colors.black),
+                                );
+                              }, width: photoMaxWidth(context)),
+                            ),
                           ),
                         const Padding(
                           padding: EdgeInsets.only(top: usernameTextPadding),

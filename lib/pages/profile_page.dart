@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/components/card_button.dart';
+import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/pages/settings_page.dart';
+import 'package:threads_clone/pages/zoom_media_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
@@ -62,33 +64,62 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 15),
-            child: Text(
-              widget.fullName,
-              style: smallHeader(),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, left: 15),
-            child: Text(
-              widget.username,
-              style: usernameTextStyle(),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, left: 15),
-            child: Text(
-              widget.userBio,
-              style: usernameTextStyle(),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20, left: 15),
-            child: Text(
-              "${widget.followerCount} followers",
-              style: smallText(),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30, left: 15),
+                    child: Text(
+                      widget.fullName,
+                      style: smallHeader(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 15),
+                    child: Text(
+                      widget.username,
+                      style: usernameTextStyle(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 15),
+                    child: Text(
+                      widget.userBio,
+                      style: usernameTextStyle(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, left: 15),
+                    child: Text(
+                      "${widget.followerCount} followers",
+                      style: smallText(),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: InkWell(
+                  onTap: () => {
+                    pushToNewPage(
+                        context,
+                        ZoomMediaPage(
+                          mediaPath: widget.profilePhotoPath!,
+                          isMediaCircular: true,
+                        ))
+                  },
+                  child: ProfileCardAvatar(
+                    initials: "JD",
+                    withoutAddButton: true,
+                    size: Size(70, 70),
+                    profilePhotoPath: widget.profilePhotoPath,
+                  ),
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
