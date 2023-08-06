@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/utils/utils.dart';
 
-import '../dtos/profile_dto.dart';
-import '../styles/text_styles.dart';
+import '../../dtos/profile_dto.dart';
+import '../../styles/text_styles.dart';
 
 class ProfileCard extends StatefulWidget {
   const ProfileCard({super.key, required this.profileDTO});

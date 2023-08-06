@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../styles/text_styles.dart';
 import '../../utils/utils.dart';
 
 void bottomSheet({
@@ -34,8 +33,9 @@ void bottomSheet({
                 alignment: Alignment.center,
                 child: InkWell(
                     onTap: () => popPage(context),
-                    child: Text("Cancel",
-                        style: normalTextStyle(customFontSize: 14))),
+                    child: Text(
+                      "Cancel",
+                    )),
               ),
 
               middle: Text(sheetName),
@@ -45,9 +45,9 @@ void bottomSheet({
                       alignment: Alignment.center,
                       child: InkWell(
                         onTap: () => popPage(context), //TODO: Do something.
-                        child: Text("Done",
-                            style: boldTextStyle(
-                                color: Colors.blue, customFontSize: 14)),
+                        child: Text(
+                          "Done",
+                        ),
                       ),
                     )
                   : null,

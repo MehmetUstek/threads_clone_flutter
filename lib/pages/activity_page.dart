@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:threads_clone/components/activity_filters.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
-import '../components/activity_card.dart';
+import '../components/cards/activity_card.dart';
 import '../dtos/profile_dto.dart';
 import '../utils/search_data.dart';
 import '../utils/utils.dart';

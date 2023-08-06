@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:threads_clone/components/cards/new_thread_card.dart';
 import 'package:threads_clone/dtos/profile_dto.dart';
 
-import '../activity_card.dart';
 import 'bottom_sheet.dart';
 
 void newThreadBottomSheet(BuildContext context) => bottomSheet(
@@ -11,7 +11,7 @@ void newThreadBottomSheet(BuildContext context) => bottomSheet(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 50),
-            child: ActivityCard(
+            child: NewThreadCard(
               profileDTO: ProfileDTO(
                   followerCount: 10,
                   username: "a",

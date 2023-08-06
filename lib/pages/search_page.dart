@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../components/profile_card.dart';
+import '../components/cards/profile_card.dart';
 import '../dtos/profile_dto.dart';
 import '../styles/text_styles.dart';
 import '../utils/search_data.dart';

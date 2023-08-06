@@ -5,7 +5,7 @@ import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/styles/color_styles.dart';
 import 'package:threads_clone/utils/utils.dart';
 
-import '../dtos/profile_dto.dart';
+import '../../dtos/profile_dto.dart';
 
 class ActivityCard extends StatelessWidget {
   const ActivityCard({super.key, required this.profileDTO});

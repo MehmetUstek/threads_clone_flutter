@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:threads_clone/styles/color_styles.dart';
 
 TextStyle? header() => const TextStyle(
     fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black);
@@ -11,8 +11,11 @@ TextStyle? titleTextStyle(
         {Color color = Colors.black, double customFontSize = 15}) =>
     TextStyle(
         fontSize: customFontSize, fontWeight: FontWeight.bold, color: color);
-TextStyle? smallText({double customFontSize = 15}) => TextStyle(
-    fontSize: customFontSize, fontWeight: FontWeight.normal, color: darkGrey);
+TextStyle? smallText(
+        {double customFontSize = 15,
+        Color color = CupertinoColors.inactiveGray}) =>
+    TextStyle(
+        fontSize: customFontSize, fontWeight: FontWeight.normal, color: color);
 TextStyle? normalTextStyle(
         {double customFontSize = 17, Color color = Colors.black}) =>
     TextStyle(
