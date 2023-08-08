@@ -17,9 +17,7 @@ class ActivityCard extends StatelessWidget {
     final String username = profileDTO.username;
     final bool isVerifiedUser = profileDTO.isVerifiedUser;
     final String? profilePhotoPath = profileDTO.profilePhotoPath;
-    final String userBio = profileDTO.userBio;
     final String initials = profileDTO.initials;
-    final int followerCount = profileDTO.followerCount;
 
     return Padding(
       padding: const EdgeInsets.only(top: 20),
@@ -34,6 +32,7 @@ class ActivityCard extends StatelessWidget {
                 children: [
                   ProfileCardAvatar(
                     initials: initials,
+                    profilePhotoPath: profilePhotoPath,
                   ),
                   Expanded(
                     flex: 3,

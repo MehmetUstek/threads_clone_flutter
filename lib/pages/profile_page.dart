@@ -114,7 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: ProfileCardAvatar(
                     initials: "JD",
                     withoutAddButton: true,
-                    size: Size(70, 70),
+                    size: const Size(70, 70),
                     profilePhotoPath: widget.profilePhotoPath,
                   ),
                 ),

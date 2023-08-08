@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads_clone/dtos/mentions_enum.dart';
 import 'package:threads_clone/styles/color_styles.dart';
 import 'package:threads_clone/utils/utils.dart';
 
+import '../components/bloc_options_page.dart';
 import '../components/options_page.dart';
 import '../components/share_sheet.dart';
 import '../dtos/extended_card_dto.dart';
@@ -82,7 +84,7 @@ List<SettingsCardDTO> privacyOptions(BuildContext context) => [
           cardTitle: "Mentions",
           onClick: () => pushToNewPage(
               context,
-              OptionsPage(
+              const BlocOptionsPage(
                 pageName: "Mentions",
                 optionsData: mentionsOptions,
               )),
@@ -101,7 +103,7 @@ List<SettingsCardDTO> privacyOptions(BuildContext context) => [
         trailingIcon: rightChevronIcon,
         onClick: () => pushToNewPage(
             context,
-            OptionsPage(
+            const OptionsPage(
               pageName: "Muted",
               optionsData: [],
             )),
@@ -131,27 +133,35 @@ List<SettingsCardDTO> privacyOptions(BuildContext context) => [
           trailingIcon: externalLinkIcon),
     ];
 
-final List<SettingsCardDTO> mentionsOptions = [
-  SettingsCardDTO(
-    cardTitle: "Allow @mentions from",
-    extendedCard: ExtendedCard(
-        cardTitleBold: true,
-        cardSubtitle:
-            "Choose who can @mention you to link your profile in their threads, replies or bio. WHen people try to @mention you, they'll see you don't allow @mentions"),
-  ),
-  SettingsCardDTO(
-    cardTitle: "Everyone",
-    trailingIcon: const Icon(CupertinoIcons.check_mark_circled_solid),
-  ),
-  SettingsCardDTO(
-    cardTitle: "Profiles you follow",
-    trailingIcon: const Icon(CupertinoIcons.circle),
-  ),
-  SettingsCardDTO(
-    cardTitle: "No one",
-    trailingIcon: const Icon(CupertinoIcons.circle),
-  ),
-];
+List<SettingsCardDTO> mentionsOptions(
+        BuildContext context, MentionsEnum state) =>
+    [
+      SettingsCardDTO(
+        cardTitle: "Allow @mentions from",
+        extendedCard: ExtendedCard(
+            cardTitleBold: true,
+            cardSubtitle:
+                "Choose who can @mention you to link your profile in their threads, replies or bio. WHen people try to @mention you, they'll see you don't allow @mentions"),
+      ),
+      SettingsCardDTO(
+          cardTitle: "Everyone",
+          trailingIcon: mentionsRadio(
+              groupValue: state,
+              radioValue: MentionsEnum.everyone,
+              blocContext: context)),
+      SettingsCardDTO(
+          cardTitle: "Profiles you follow",
+          trailingIcon: mentionsRadio(
+              groupValue: state,
+              radioValue: MentionsEnum.youFollow,
+              blocContext: context)),
+      SettingsCardDTO(
+          cardTitle: "No one",
+          trailingIcon: mentionsRadio(
+              groupValue: state,
+              radioValue: MentionsEnum.noOne,
+              blocContext: context)),
+    ];
 final List<SettingsCardDTO> hiddenWordsOptions = [
   SettingsCardDTO(
     cardTitle: "Offensive words and phrases",

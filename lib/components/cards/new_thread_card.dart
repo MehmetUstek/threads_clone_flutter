@@ -17,7 +17,7 @@ class NewThreadCard extends StatefulWidget {
 class _NewThreadCardState extends State<NewThreadCard> {
   @override
   Widget build(BuildContext context) {
-    ProfileDTO profileDTO = this.widget.profileDTO;
+    ProfileDTO profileDTO = widget.profileDTO;
     final String username = profileDTO.username;
     final bool isVerifiedUser = profileDTO.isVerifiedUser;
     final String? profilePhotoPath = profileDTO.profilePhotoPath;
@@ -38,6 +38,7 @@ class _NewThreadCardState extends State<NewThreadCard> {
                 children: [
                   ProfileCardAvatar(
                     initials: initials,
+                    profilePhotoPath: profilePhotoPath,
                   ),
                   Expanded(
                     child: Padding(
@@ -63,7 +64,8 @@ class _NewThreadCardState extends State<NewThreadCard> {
                           Padding(
                             padding: const EdgeInsets.only(top: 2),
                             child: TextField(
-                              style: TextStyle(fontSize: 15, height: 1.5),
+                              autofocus: true,
+                              style: const TextStyle(fontSize: 15, height: 1.5),
                               cursorColor: Colors.black,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -78,10 +80,10 @@ class _NewThreadCardState extends State<NewThreadCard> {
                               padding: const EdgeInsets.only(top: 5),
                               child: IconButton(
                                 padding: EdgeInsets.zero,
-                                constraints: BoxConstraints(),
+                                constraints: const BoxConstraints(),
                                 onPressed: () =>
                                     {}, //TODO: Add image_picker. Leave this at the end.
-                                icon: Icon(
+                                icon: const Icon(
                                   CupertinoIcons.paperclip,
                                   size: 20,
                                   color: CupertinoColors.inactiveGray,

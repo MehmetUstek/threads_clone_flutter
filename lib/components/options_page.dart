@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:threads_clone/components/scaffold_with_name.dart';
 
 import '../components/settings_card.dart';
+import '../dtos/back_button_enum.dart';
 import '../dtos/settings_card_dto.dart';
 import '../utils/utils.dart';
 
@@ -16,6 +17,7 @@ class OptionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScaffoldWithName(
+      backbuttonEnum: BackButtonEnum.back,
       pageName: pageName,
       body: Padding(
         padding: const EdgeInsets.only(top: 20),

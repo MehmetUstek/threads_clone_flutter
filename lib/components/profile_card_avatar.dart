@@ -42,13 +42,13 @@ class ProfileCardAvatar extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                        maximumSize: Size(30, 30),
-                        minimumSize: Size(20, 20),
+                        maximumSize: const Size(30, 30),
+                        minimumSize: const Size(20, 20),
                         elevation: 2.0,
-                        padding: EdgeInsets.all(0.1),
-                        shape: CircleBorder(),
+                        padding: const EdgeInsets.all(0.1),
+                        shape: const CircleBorder(),
                         backgroundColor: Colors.black),
-                    child: Icon(
+                    child: const Icon(
                       Icons.add,
                       color: Colors.white,
                       size: 10,

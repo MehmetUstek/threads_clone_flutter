@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads_clone/bloc/mentions_bloc/mentions_cubit.dart';
 
 import '../dtos/mentions_enum.dart';
 
@@ -21,15 +23,27 @@ Widget cupertinoSwitch = SizedBox(
     ),
   ),
 );
-Widget cupertinoCombo(MentionsEnum? character) => SizedBox(
-      height: 30,
+void changeMentionOption(MentionsEnum? newValue, BuildContext context) {
+  if (newValue != null) {
+    context.read<MentionsCubit>().changeMentionOption(newValue);
+  }
+}
+
+Widget mentionsRadio(
+        {required MentionsEnum groupValue,
+        required MentionsEnum radioValue,
+        required BuildContext blocContext}) =>
+    SizedBox(
+      height: 35,
       child: FittedBox(
         fit: BoxFit.fitHeight,
         child: CupertinoRadio<MentionsEnum>(
-          value: MentionsEnum.everyone,
-          groupValue: character,
+          fillColor: CupertinoColors.white,
+          activeColor: CupertinoColors.black,
+          value: radioValue,
+          groupValue: groupValue,
           onChanged: (MentionsEnum? value) {
-            character = value;
+            changeMentionOption(value, blocContext);
           },
         ),
       ),

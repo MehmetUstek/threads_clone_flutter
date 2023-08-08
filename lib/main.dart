@@ -7,7 +7,7 @@ import 'package:threads_clone/pages/profile_page.dart';
 import 'package:threads_clone/pages/search_page.dart';
 import 'package:threads_clone/pages/splash_screen.dart';
 
-import 'components/bottomSheets/new_thread_bottomSheet.dart';
+import 'components/bottomSheets/new_thread_bottom_sheet.dart';
 
 void main() {
   runApp(const MyApp());
