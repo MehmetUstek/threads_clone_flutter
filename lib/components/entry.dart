@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads_clone/components/entry_actions.dart';
+import 'package:threads_clone/components/entry_like_reply_details.dart';
 import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/dtos/entry_dto.dart';
+import 'package:threads_clone/pages/entry_page.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 import '../pages/zoom_media_page.dart';
@@ -31,6 +34,7 @@ class _EntryState extends State<Entry> {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: InkWell(
+        onTap: () => pushToNewPage(context, EntryPage(entryDTO: entryDTO)),
         child: SizedBox(
           width: screenWidth(context),
           child: Column(
@@ -92,73 +96,24 @@ class _EntryState extends State<Entry> {
                                     isMediaCircular: false,
                                     mediaPath: photoAddedPath,
                                   )),
-                              child: Image.network(photoAddedPath,
-                                  fit: BoxFit.fill, loadingBuilder:
-                                      (BuildContext context, Widget child,
-                                          ImageChunkEvent? loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return const Center(
-                                  child: CircularProgressIndicator(
-                                      color: Colors.black),
-                                );
-                              }, width: photoMaxWidth(context)),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(photoAddedPath,
+                                    fit: BoxFit.fill, loadingBuilder:
+                                        (BuildContext context, Widget child,
+                                            ImageChunkEvent? loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return const Center(
+                                    child: CircularProgressIndicator(
+                                        color: Colors.black),
+                                  );
+                                }, width: photoMaxWidth(context)),
+                              ),
                             ),
                           ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: usernameTextPadding),
-                          child: Wrap(
-                            spacing: iconSpacing,
-                            children: [
-                              Icon(
-                                CupertinoIcons.heart,
-                                size: iconSize,
-                              ),
-                              Icon(
-                                CupertinoIcons.bubble_right,
-                                size: iconSize,
-                              ),
-                              Icon(
-                                CupertinoIcons.repeat,
-                                size: iconSize,
-                              ),
-                              Icon(
-                                CupertinoIcons.paperplane,
-                                size: iconSize,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(top: usernameTextPadding),
-                          child: Row(
-                            children: [
-                              Text(
-                                "$replyCount replies",
-                                style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(left: 5),
-                                child: Icon(
-                                  CupertinoIcons.circle_fill,
-                                  size: 3,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 5),
-                                child: Text(
-                                  "$likeCount likes",
-                                  style: const TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        const EntryActions(),
+                        EntryLikeReplyDetails(
+                            replyCount: replyCount, likeCount: likeCount)
                       ],
                     ),
                   ),

@@ -26,6 +26,7 @@ final List entryData = [
     "entryId": uuid.v4(),
     "firstName": "Jane",
     "lastName": "Doe",
+    // "replies": []
   },
   {
     "replyCount": randomNumberGenerator(),

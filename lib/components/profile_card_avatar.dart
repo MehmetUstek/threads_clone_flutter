@@ -9,17 +9,19 @@ class ProfileCardAvatar extends StatelessWidget {
       required this.initials,
       this.profilePhotoPath,
       this.withoutAddButton = false,
-      this.size})
+      this.size,
+      this.paddingToTheSide})
       : super(key: key);
   final String initials;
   final String? profilePhotoPath;
   final bool withoutAddButton;
   final Size? size;
+  final double? paddingToTheSide;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: paddingToTheSides),
+      padding: EdgeInsets.only(left: paddingToTheSide ?? paddingToTheSides),
       child: SizedBox(
         width: size?.width ?? 45,
         height: size?.height ?? 45,
