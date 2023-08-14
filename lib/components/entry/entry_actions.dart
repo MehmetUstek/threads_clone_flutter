@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads_clone/components/bottomSheets/options_sheet.dart';
 import 'package:threads_clone/dtos/settings_card_dto.dart';
@@ -41,7 +42,34 @@ class _EntryActionsState extends State<EntryActions> {
         ),
         SettingsCard(
           settingsOptions: SettingsCardDTO(
-              cardTitle: "Copy link", trailingIcon: const Icon(Icons.link)),
+            cardTitle: "Copy link",
+            trailingIcon: const Icon(Icons.link),
+            onClick: () async {
+              popPage(context);
+              const snackBar = SnackBar(
+                behavior: SnackBarBehavior.floating,
+                margin: EdgeInsets.only(bottom: 65, left: 5, right: 5),
+                elevation: 5,
+                content: Wrap(
+                  spacing: 12,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Icon(
+                      CupertinoIcons.checkmark_alt_circle,
+                      color: Colors.white,
+                    ),
+                    Text('Link copied to clipboard'),
+                  ],
+                ),
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+              await Clipboard.setData(
+                  ClipboardData(text: "your text")); //TODO: Thread link
+              // copied successfully
+            },
+          ),
         ),
         SettingsCard(
           settingsOptions: SettingsCardDTO(

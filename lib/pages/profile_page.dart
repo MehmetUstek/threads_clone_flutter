@@ -103,14 +103,12 @@ class _ProfilePageState extends State<ProfilePage> {
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: InkWell(
-                  onTap: () => {
-                    pushToNewPage(
-                        context,
-                        ZoomMediaPage(
+                  onTap: () async => await showDialog(
+                      useSafeArea: false,
+                      context: context,
+                      builder: (_) => ZoomMediaPage(
                           mediaPath: widget.profilePhotoPath!,
-                          isMediaCircular: true,
-                        ))
-                  },
+                          isMediaCircular: true)),
                   child: ProfileCardAvatar(
                     initials: "JD",
                     withoutAddButton: true,

@@ -13,12 +13,11 @@ class EntryMedia extends StatelessWidget {
       padding:
           const EdgeInsets.only(top: photoPadding, bottom: usernameTextPadding),
       child: InkWell(
-        onTap: () => pushToNewPage(
-            context,
-            ZoomMediaPage(
-              isMediaCircular: false,
-              mediaPath: photoAddedPath,
-            )),
+        onTap: () async => await showDialog(
+            useSafeArea: false,
+            context: context,
+            builder: (_) => ZoomMediaPage(
+                mediaPath: photoAddedPath, isMediaCircular: false)),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
           child: Image.network(photoAddedPath, fit: BoxFit.fill, loadingBuilder:

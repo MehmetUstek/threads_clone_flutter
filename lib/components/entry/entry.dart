@@ -6,6 +6,7 @@ import 'package:threads_clone/components/entry/entry_media.dart';
 import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/dtos/entry_dto.dart';
 import 'package:threads_clone/pages/entry_page.dart';
+import 'package:threads_clone/pages/user_profile_page.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 class Entry extends StatefulWidget {
@@ -63,10 +64,19 @@ class _EntryState extends State<Entry> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              username,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                            InkWell(
+                              onTap: () => pushToNewPage(
+                                  context,
+                                  UserProfilePage(
+                                      username: username,
+                                      userBio: "A",
+                                      fullName: "A",
+                                      followerCount: 12)),
+                              child: Text(
+                                username,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                             if (isVerifiedUser)
                               const Padding(

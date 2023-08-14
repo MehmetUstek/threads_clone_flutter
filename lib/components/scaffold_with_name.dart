@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads_clone/components/back_icon.dart';
 
 import '../dtos/back_button_enum.dart';
-import '../styles/text_styles.dart';
-import '../utils/utils.dart';
 
 class ScaffoldWithName extends StatelessWidget {
   const ScaffoldWithName(
@@ -29,24 +28,7 @@ class ScaffoldWithName extends StatelessWidget {
             widthFactor: 1.0,
             alignment: Alignment.center,
             child: Material(
-              child: InkWell(
-                  onTap: () => popPage(context),
-                  child: backbuttonEnum == BackButtonEnum.cancel
-                      ? Text("Cancel",
-                          style: normalTextStyle(customFontSize: 14))
-                      : Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 2,
-                          children: [
-                            const Icon(
-                              CupertinoIcons.left_chevron,
-                              size: 18,
-                              color: CupertinoColors.black,
-                            ),
-                            Text("Back",
-                                style: normalTextStyle(customFontSize: 14))
-                          ],
-                        )),
+              child: BackIcon(backButtonEnum: backbuttonEnum),
             ),
           ),
 

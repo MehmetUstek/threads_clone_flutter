@@ -33,6 +33,7 @@ class ProfileCardAvatar extends StatelessWidget {
                     backgroundImage: NetworkImage(profilePhotoPath!),
                   )
                 : CircleAvatar(
+                    maxRadius: size?.width ?? double.infinity,
                     backgroundColor: Colors.orange.shade800,
                     child: Text(initials,
                         style: normalTextStyle(color: Colors.white)),
