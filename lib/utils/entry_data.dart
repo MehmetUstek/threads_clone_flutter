@@ -16,6 +16,18 @@ final List entryData = [
     "lastName": "Ustek",
     "profilePhotoPath":
         "https://avatars.githubusercontent.com/u/53303474?s=400&u=1dc04b3eb1ac41e765f0f2dd1f9ce717b10122f0&v=4",
+    "replies": [
+      {
+        "replyCount": randomNumberGenerator(),
+        "username": "franzk0",
+        "isVerifiedUser": true,
+        "likeCount": randomNumberGenerator(),
+        "entryText": shortLipsumText,
+        "entryId": uuid.v4(),
+        "firstName": "Franz",
+        "lastName": "K"
+      },
+    ]
   },
   {
     "replyCount": randomNumberGenerator(),
@@ -26,7 +38,32 @@ final List entryData = [
     "entryId": uuid.v4(),
     "firstName": "Jane",
     "lastName": "Doe",
-    // "replies": []
+    "replies": [
+      {
+        "replyCount": randomNumberGenerator(),
+        "username": "mustek",
+        "isVerifiedUser": false,
+        "likeCount": randomNumberGenerator(),
+        "entryText": shortLipsumText,
+        "photoAddedPath":
+            'https://media.giphy.com/media/1GlDW1HBD3q2A/giphy.gif',
+        "entryId": uuid.v4(),
+        "firstName": "Mehmet",
+        "lastName": "Ustek",
+        "profilePhotoPath":
+            "https://avatars.githubusercontent.com/u/53303474?s=400&u=1dc04b3eb1ac41e765f0f2dd1f9ce717b10122f0&v=4",
+      },
+      {
+        "replyCount": randomNumberGenerator(),
+        "username": "franzk0",
+        "isVerifiedUser": true,
+        "likeCount": randomNumberGenerator(),
+        "entryText": shortLipsumText,
+        "entryId": uuid.v4(),
+        "firstName": "Franz",
+        "lastName": "K"
+      },
+    ]
   },
   {
     "replyCount": randomNumberGenerator(),

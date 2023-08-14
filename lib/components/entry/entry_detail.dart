@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:threads_clone/components/entry.dart';
+import 'package:threads_clone/components/entry/entry.dart';
 import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/dtos/entry_dto.dart';
 import 'package:threads_clone/utils/utils.dart';
 
-import '../pages/zoom_media_page.dart';
+import 'entry_actions.dart';
+import 'entry_like_reply_details.dart';
+import 'entry_media.dart';
 
 class EntryDetail extends StatefulWidget {
   const EntryDetail({super.key, required this.entryDTO});
@@ -21,15 +23,23 @@ class _EntryDetailState extends State<EntryDetail> {
   Widget build(BuildContext context) {
     EntryDTO entryDTO = widget.entryDTO;
     final int replyCount = entryDTO.replyCount;
-    final int likeCount = entryDTO.likeCount;
+    int likeCount = entryDTO.likeCount;
     final String username = entryDTO.username;
     final String initials = entryDTO.initials;
     final bool isVerifiedUser = entryDTO.isVerifiedUser;
     final String entryText = entryDTO.entryText;
     final String? photoAddedPath = entryDTO.photoAddedPath;
     final String? profilePhotoPath = entryDTO.profilePhotoPath;
-    // final List replies= entryDTO.replies; //TODO: Add replies section and data.
+    final List<EntryDTO>? replies =
+        entryDTO.replies; //TODO: Add replies section and data.
 
+    void onLike() => setState(() {
+          likeCount++;
+          print(likeCount);
+        });
+    void onUnlike() => setState(() {
+          likeCount--;
+        });
     return Padding(
       padding: const EdgeInsets.only(
         top: 20,
@@ -94,55 +104,19 @@ class _EntryDetailState extends State<EntryDetail> {
             if (photoAddedPath != null)
               Padding(
                 padding: const EdgeInsets.only(
-                    top: photoPadding,
-                    bottom: usernameTextPadding,
-                    right: paddingToTheSides,
-                    left: paddingToTheSides),
-                child: InkWell(
-                  onTap: () => pushToNewPage(
-                      context,
-                      ZoomMediaPage(
-                        isMediaCircular: false,
-                        mediaPath: photoAddedPath,
-                      )),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(photoAddedPath, fit: BoxFit.fill,
-                        loadingBuilder: (BuildContext context, Widget child,
-                            ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return const Center(
-                        child: CircularProgressIndicator(color: Colors.black),
-                      );
-                    }, width: photoMaxWidth(context)),
-                  ),
-                ),
+                    top: usernameTextPadding,
+                    left: paddingToTheSides,
+                    right: paddingToTheSides),
+                child: EntryMedia(photoAddedPath: photoAddedPath),
               ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                   top: usernameTextPadding,
                   left: paddingToTheSides,
                   right: paddingToTheSides),
-              child: Wrap(
-                spacing: iconSpacing,
-                children: [
-                  Icon(
-                    CupertinoIcons.heart,
-                    size: iconSize,
-                  ),
-                  Icon(
-                    CupertinoIcons.bubble_right,
-                    size: iconSize,
-                  ),
-                  Icon(
-                    CupertinoIcons.repeat,
-                    size: iconSize,
-                  ),
-                  Icon(
-                    CupertinoIcons.paperplane,
-                    size: iconSize,
-                  ),
-                ],
+              child: EntryActions(
+                onLike: onLike,
+                onUnlike: onUnlike,
               ),
             ),
             Padding(
@@ -150,31 +124,8 @@ class _EntryDetailState extends State<EntryDetail> {
                   top: usernameTextPadding,
                   left: paddingToTheSides,
                   right: paddingToTheSides),
-              child: Row(
-                children: [
-                  Text(
-                    "$replyCount replies",
-                    style: const TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: Icon(
-                      CupertinoIcons.circle_fill,
-                      size: 3,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: Text(
-                      "$likeCount likes",
-                      style: const TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
+              child: EntryLikeReplyDetails(
+                  replyCount: replyCount, likeCount: likeCount),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
@@ -184,7 +135,16 @@ class _EntryDetailState extends State<EntryDetail> {
                 height: 1,
               ),
             ),
-            Entry(entryDTO: entryDTO),
+            if (replies != null)
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: replies.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Entry(
+                      entryDTO: replies[index],
+                    );
+                  }),
           ],
         ),
       ),

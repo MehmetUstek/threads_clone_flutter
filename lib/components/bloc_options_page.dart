@@ -6,8 +6,8 @@ import 'package:threads_clone/components/scaffold_with_name.dart';
 import 'package:threads_clone/dtos/back_button_enum.dart';
 import 'package:threads_clone/dtos/mentions_enum.dart';
 
-import '../components/settings_card.dart';
 import '../utils/utils.dart';
+import 'cards/settings_card.dart';
 
 class BlocOptionsPage extends StatelessWidget {
   const BlocOptionsPage(

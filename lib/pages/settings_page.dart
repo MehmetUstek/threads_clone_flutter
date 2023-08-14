@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/components/scaffold_with_name.dart';
 
-import '../components/settings_card.dart';
+import '../components/cards/settings_card.dart';
 import '../dtos/back_button_enum.dart';
 import '../styles/color_styles.dart';
 import '../utils/settings_options.dart';

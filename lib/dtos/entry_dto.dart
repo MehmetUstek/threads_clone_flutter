@@ -10,6 +10,7 @@ class EntryDTO {
   final String lastName;
   final String initials;
   final String? profilePhotoPath;
+  List<EntryDTO>? replies;
 
   EntryDTO(
       {required this.replyCount,
@@ -22,7 +23,8 @@ class EntryDTO {
       required this.entryId,
       required this.firstName,
       required this.lastName,
-      required this.initials});
+      required this.initials,
+      this.replies});
   EntryDTO.fromJson(Map<String, dynamic> json)
       : replyCount = json['replyCount'],
         likeCount = json['likeCount'],
@@ -35,7 +37,11 @@ class EntryDTO {
         firstName = json['firstName'],
         lastName = json['lastName'],
         initials =
-            json['firstName'].toString()[0] + json['lastName'].toString()[0];
+            json['firstName'].toString()[0] + json['lastName'].toString()[0],
+        replies = json["replies"] != null
+            ? List<EntryDTO>.from(
+                json["replies"].map((model) => EntryDTO.fromJson(model)))
+            : [];
 
   Map<String, dynamic> toJson() => {
         'replyCount': replyCount,
@@ -46,4 +52,9 @@ class EntryDTO {
         'photoAddedPath': photoAddedPath,
         'entryId': entryId,
       };
+
+  @override
+  String toString() {
+    return 'EntryDTO{username: $username, entryId: $entryId, firstName: $firstName, replies: $replies}';
+  }
 }

@@ -29,7 +29,7 @@ void bottomSheet({
           return ScaffoldWithName(
             backbuttonEnum: BackButtonEnum.cancel,
             bottomSheet: bottomSheet,
-            pageName: "New Thread",
+            pageName: sheetName,
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [...children],

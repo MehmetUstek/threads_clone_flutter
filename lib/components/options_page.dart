@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/components/scaffold_with_name.dart';
 
-import '../components/settings_card.dart';
 import '../dtos/back_button_enum.dart';
 import '../dtos/settings_card_dto.dart';
 import '../utils/utils.dart';
+import 'cards/settings_card.dart';
 
 class OptionsPage extends StatelessWidget {
   const OptionsPage(

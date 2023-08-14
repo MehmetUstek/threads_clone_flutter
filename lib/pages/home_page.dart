@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads_clone/components/entry.dart';
+import 'package:threads_clone/components/entry/entry.dart';
 import 'package:threads_clone/utils/entry_data.dart';
 
 import '../dtos/entry_dto.dart';
@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
             itemCount: entryData.length,
             itemBuilder: (BuildContext context, int index) {
+              print(EntryDTO.fromJson(entryData[index]));
               return Entry(
                 entryDTO: EntryDTO.fromJson(entryData[index]),
               );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads_clone/components/entry_detail.dart';
+import 'package:threads_clone/components/entry/entry_detail.dart';
 import 'package:threads_clone/components/scaffold_with_name.dart';
 import 'package:threads_clone/dtos/back_button_enum.dart';
 import 'package:threads_clone/dtos/entry_dto.dart';
