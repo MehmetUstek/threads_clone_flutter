@@ -1,91 +1,41 @@
+import 'package:threads_clone/utils/profile_data.dart';
 import 'package:threads_clone/utils/text_utils.dart';
 import 'package:threads_clone/utils/utils.dart';
-import 'package:uuid/uuid.dart';
 
-var uuid = const Uuid();
-final List entryData = [
-  {
-    "replyCount": randomNumberGenerator(),
-    "username": "mustek",
-    "isVerifiedUser": false,
-    "likeCount": randomNumberGenerator(),
-    "entryText": shortLipsumText,
-    "photoAddedPath": 'https://media.giphy.com/media/1GlDW1HBD3q2A/giphy.gif',
-    "entryId": uuid.v4(),
-    "firstName": "Mehmet",
-    "lastName": "Ustek",
-    "profilePhotoPath":
-        "https://avatars.githubusercontent.com/u/53303474?s=400&u=1dc04b3eb1ac41e765f0f2dd1f9ce717b10122f0&v=4",
-    "replies": [
-      {
-        "replyCount": randomNumberGenerator(),
-        "username": "franzk0",
-        "isVerifiedUser": true,
-        "likeCount": randomNumberGenerator(),
-        "entryText": shortLipsumText,
-        "entryId": uuid.v4(),
-        "firstName": "Franz",
-        "lastName": "K"
-      },
-    ]
-  },
-  {
-    "replyCount": randomNumberGenerator(),
-    "username": "janedoe12",
-    "isVerifiedUser": true,
-    "likeCount": randomNumberGenerator(),
-    "entryText": lipsumText,
-    "entryId": uuid.v4(),
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "replies": [
-      {
-        "replyCount": randomNumberGenerator(),
-        "username": "mustek",
-        "isVerifiedUser": false,
-        "likeCount": randomNumberGenerator(),
-        "entryText": shortLipsumText,
-        "photoAddedPath":
-            'https://media.giphy.com/media/1GlDW1HBD3q2A/giphy.gif',
-        "entryId": uuid.v4(),
-        "firstName": "Mehmet",
-        "lastName": "Ustek",
-        "profilePhotoPath":
-            "https://avatars.githubusercontent.com/u/53303474?s=400&u=1dc04b3eb1ac41e765f0f2dd1f9ce717b10122f0&v=4",
-      },
-      {
-        "replyCount": randomNumberGenerator(),
-        "username": "franzk0",
-        "isVerifiedUser": true,
-        "likeCount": randomNumberGenerator(),
-        "entryText": shortLipsumText,
-        "entryId": uuid.v4(),
-        "firstName": "Franz",
-        "lastName": "K"
-      },
-    ]
-  },
-  {
-    "replyCount": randomNumberGenerator(),
-    "username": "franzk0",
-    "isVerifiedUser": true,
-    "likeCount": randomNumberGenerator(),
-    "entryText": shortLipsumText,
-    "entryId": uuid.v4(),
-    "firstName": "Franz",
-    "lastName": "K"
-  },
-  {
-    "replyCount": randomNumberGenerator(),
-    "username": "kgirenes",
-    "likeCount": randomNumberGenerator(),
-    "isVerifiedUser": false,
-    "entryText": shortLipsumText,
-    "photoAddedPath":
-        'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
-    "entryId": uuid.v4(),
-    "firstName": "Kerem",
-    "lastName": "Girenes",
-    "profilePhotoPath": "https://avatars.githubusercontent.com/u/69321438?v=4",
-  },
-];
+import '../dtos/entry_dto.dart';
+
+final Map<String, EntryDTO> entryData = {
+  "1": EntryDTO(
+    replyCount: randomNumberGenerator(),
+    likeCount: randomNumberGenerator(),
+    entryText: shortLipsumText,
+    photoAddedPath: 'https://media.giphy.com/media/1GlDW1HBD3q2A/giphy.gif',
+    entryId: "1",
+    userDetails: profileData["mustek"]!,
+    replies: [
+      EntryDTO(
+        replyCount: randomNumberGenerator(),
+        userDetails: profileData["franzk0"]!,
+        likeCount: randomNumberGenerator(),
+        entryText: shortLipsumText,
+        entryId: "3",
+      ),
+    ],
+  ),
+  "2": EntryDTO(
+    replyCount: randomNumberGenerator(),
+    likeCount: randomNumberGenerator(),
+    entryText: shortLipsumText,
+    entryId: "2",
+    userDetails: profileData["mustek"]!,
+    replies: [
+      EntryDTO(
+        replyCount: randomNumberGenerator(),
+        userDetails: profileData["franzk0"]!,
+        likeCount: randomNumberGenerator(),
+        entryText: shortLipsumText,
+        entryId: "2",
+      ),
+    ],
+  ),
+};

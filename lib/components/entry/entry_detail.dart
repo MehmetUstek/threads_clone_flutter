@@ -39,12 +39,12 @@ class _EntryDetailState extends State<EntryDetail> {
     entryDTO = widget.entryDTO;
     replyCount = entryDTO.replyCount;
     likeCount = entryDTO.likeCount;
-    username = entryDTO.username;
-    initials = entryDTO.initials;
-    isVerifiedUser = entryDTO.isVerifiedUser;
+    username = entryDTO.userDetails.username;
+    initials = entryDTO.userDetails.initials;
+    isVerifiedUser = entryDTO.userDetails.isVerifiedUser;
     entryText = entryDTO.entryText;
     photoAddedPath = entryDTO.photoAddedPath;
-    profilePhotoPath = entryDTO.profilePhotoPath;
+    profilePhotoPath = entryDTO.userDetails.profilePhotoPath;
     replies = entryDTO.replies;
   }
 

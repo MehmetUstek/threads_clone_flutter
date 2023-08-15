@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:threads_clone/components/entry/entry.dart';
-import 'package:threads_clone/utils/entry_data.dart';
+import 'package:threads_clone/utils/homepage_entry_data.dart';
 
 import '../dtos/entry_dto.dart';
 
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           // and return asynchronous code
           //TODO: Update data when refreshed.
           return Future<void>.value(
-              entryData.map((i) => EntryDTO.fromJson(i)).toList());
+              homepage_entryData.map((i) => EntryDTO.fromJson(i)).toList());
         },
         // This check is used to customize listening to scroll notifications
         // from the widget's children.
@@ -38,11 +38,11 @@ class _HomePageState extends State<HomePage> {
         //   return notification.depth == 1;
         // },
         child: ListView.builder(
-            itemCount: entryData.length,
+            itemCount: homepage_entryData.length,
             itemBuilder: (BuildContext context, int index) {
-              print(EntryDTO.fromJson(entryData[index]));
+              print(EntryDTO.fromJson(homepage_entryData[index]));
               return Entry(
-                entryDTO: EntryDTO.fromJson(entryData[index]),
+                entryDTO: EntryDTO.fromJson(homepage_entryData[index]),
               );
             }),
       ),

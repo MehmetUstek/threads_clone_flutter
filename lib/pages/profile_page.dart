@@ -6,9 +6,11 @@ import 'package:threads_clone/dtos/profile_dto.dart';
 import 'package:threads_clone/pages/settings_page.dart';
 import 'package:threads_clone/pages/zoom_media_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
+import 'package:threads_clone/utils/entry_data.dart';
 import 'package:threads_clone/utils/profile_data.dart';
 
 import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
+import '../components/entry/entry.dart';
 import '../components/options_page.dart';
 import '../components/share_sheet.dart';
 import '../utils/settings_options.dart';
@@ -40,8 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -196,6 +197,16 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
+          if (profileDTO.userEntryIds != null)
+            ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: profileDTO.userEntryIds!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Entry(
+                    entryDTO: entryData[profileDTO.userEntryIds![index]]!,
+                  );
+                }),
         ],
       ),
     );
