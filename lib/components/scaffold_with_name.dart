@@ -10,12 +10,14 @@ class ScaffoldWithName extends StatelessWidget {
       required this.body,
       required this.pageName,
       required this.backbuttonEnum,
-      this.bottomSheet})
+      this.bottomSheet,
+      this.isDiscard})
       : super(key: key);
   final Widget body;
   final String pageName;
   final BackButtonEnum backbuttonEnum;
   final Widget? bottomSheet;
+  final bool? isDiscard;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,10 @@ class ScaffoldWithName extends StatelessWidget {
             widthFactor: 1.0,
             alignment: Alignment.center,
             child: Material(
-              child: BackIcon(backButtonEnum: backbuttonEnum),
+              child: BackIcon(
+                backButtonEnum: backbuttonEnum,
+                isDiscard: isDiscard,
+              ),
             ),
           ),
 

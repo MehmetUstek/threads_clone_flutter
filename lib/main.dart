@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _selectedIndex = index;
       });
     } else {
-      newThreadBottomSheet(context);
+      newThreadBottomSheet(context: context, isReply: false);
     }
   }
 

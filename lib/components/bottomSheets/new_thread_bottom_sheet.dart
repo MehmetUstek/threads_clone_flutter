@@ -5,9 +5,12 @@ import 'package:threads_clone/utils/profile_data.dart';
 import '../../styles/text_styles.dart';
 import 'bottom_sheet.dart';
 
-void newThreadBottomSheet(BuildContext context) => bottomSheet(
+void newThreadBottomSheet(
+        {required BuildContext context, required bool isReply}) =>
+    bottomSheet(
         context: context,
-        sheetName: "New thread",
+        isDiscard: isReply,
+        sheetName: isReply ? "Reply" : "New thread",
         rightIcon: false,
         bottomSheet: Padding(
           padding: const EdgeInsets.all(20),

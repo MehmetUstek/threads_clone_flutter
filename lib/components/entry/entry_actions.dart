@@ -6,13 +6,22 @@ import 'package:threads_clone/components/bottomSheets/options_sheet.dart';
 import 'package:threads_clone/dtos/settings_card_dto.dart';
 
 import '../../utils/utils.dart';
+import '../bottomSheets/new_thread_bottom_sheet.dart';
 import '../cards/settings_card.dart';
+import '../share_sheet.dart';
 
 class EntryActions extends StatefulWidget {
-  const EntryActions({Key? key, required this.onLike, required this.onUnlike})
+  const EntryActions(
+      {Key? key,
+      required this.onLike,
+      required this.onUnlike,
+      required this.username,
+      required this.blocContext})
       : super(key: key);
+  final String username;
   final Function onLike;
   final Function onUnlike;
+  final BuildContext blocContext;
 
   @override
   State<EntryActions> createState() => _EntryActionsState();
@@ -21,9 +30,19 @@ class EntryActions extends StatefulWidget {
 class _EntryActionsState extends State<EntryActions> {
   bool isLiked = false;
   void onLiked() => setState(() {
-        isLiked ? widget.onUnlike() : widget.onLike();
+        isLiked
+            ? widget.onUnlike(widget.blocContext)
+            : widget.onLike(widget.blocContext);
         isLiked = !isLiked;
       });
+  late String username;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    username = widget.username;
+  }
+
   void onSend() => optionsSheet(context: context, children: [
         SettingsCard(
           settingsOptions: SettingsCardDTO(
@@ -74,22 +93,47 @@ class _EntryActionsState extends State<EntryActions> {
         SettingsCard(
           settingsOptions: SettingsCardDTO(
               cardTitle: "Share via",
-              trailingIcon: const Icon(CupertinoIcons.share)),
+              trailingIcon: const Icon(CupertinoIcons.share),
+              onClick: () {
+                popPage(context);
+                sharePressed("Post from $username");
+              }),
         ),
       ]);
   void onRepost() => optionsSheet(context: context, small: true, children: [
         SettingsCard(
           settingsOptions: SettingsCardDTO(
               cardTitle: "Repost",
-              trailingIcon: const Icon(CupertinoIcons.repeat)),
+              trailingIcon: const Icon(CupertinoIcons.repeat),
+              onClick: () async {
+                popPage(context);
+                SnackBar snackBar = SnackBar(
+                  behavior: SnackBarBehavior.floating,
+                  margin: EdgeInsets.only(
+                      bottom: screenHeight(context) / 2.3,
+                      left: screenWidth(context) / 2.8,
+                      right: screenWidth(context) / 2.8),
+                  elevation: 5,
+                  content: Text(
+                    'Reposted',
+                    textAlign: TextAlign.center,
+                  ),
+                );
+
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }),
         ),
         SettingsCard(
           settingsOptions: SettingsCardDTO(
               cardTitle: "Quote",
-              trailingIcon: const Icon(CupertinoIcons.captions_bubble)),
+              trailingIcon: const Icon(CupertinoIcons.captions_bubble),
+              onClick: () {
+                popPage(context);
+                newThreadBottomSheet(context: context, isReply: false);
+              }),
         ),
       ]);
-  void onReply() => UnimplementedError();
+  void onReply() => newThreadBottomSheet(context: context, isReply: true);
 
   @override
   Widget build(BuildContext context) {

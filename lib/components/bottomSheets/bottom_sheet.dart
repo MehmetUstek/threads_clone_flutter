@@ -10,6 +10,7 @@ void bottomSheet({
   required sheetName,
   required rightIcon,
   bottomSheet,
+  isDiscard,
 }) =>
     showModalBottomSheet<void>(
         context: context,
@@ -30,6 +31,7 @@ void bottomSheet({
             backbuttonEnum: BackButtonEnum.cancel,
             bottomSheet: bottomSheet,
             pageName: sheetName,
+            isDiscard: isDiscard,
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [...children],

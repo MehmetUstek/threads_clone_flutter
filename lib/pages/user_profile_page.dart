@@ -167,7 +167,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     CardButton(
                         buttonTitle: 'Mention',
                         fixedWidth: screenWidth(context) / 2.4,
-                        onPressed: () => newThreadBottomSheet(context)),
+                        onPressed: () => newThreadBottomSheet(
+                            context: context, isReply: false)),
                   ],
                 ),
               ),
