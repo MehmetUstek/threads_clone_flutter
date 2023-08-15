@@ -48,12 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     const ActivityPage(),
     const ProfilePage(
-      fullName: "Mehmet Üstek",
-      username: "mehmetustekk",
-      userBio: "Koc University",
-      followerCount: 123,
-      profilePhotoPath:
-          "https://avatars.githubusercontent.com/u/53303474?s=400&u=1dc04b3eb1ac41e765f0f2dd1f9ce717b10122f0&v=4",
+      username: "mustek",
     ),
   ];
 

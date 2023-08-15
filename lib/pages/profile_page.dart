@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/components/card_button.dart';
 import 'package:threads_clone/components/profile_card_avatar.dart';
+import 'package:threads_clone/dtos/profile_dto.dart';
 import 'package:threads_clone/pages/settings_page.dart';
 import 'package:threads_clone/pages/zoom_media_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
+import 'package:threads_clone/utils/profile_data.dart';
 
 import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
 import '../components/options_page.dart';
@@ -16,16 +18,8 @@ class ProfilePage extends StatefulWidget {
   const ProfilePage({
     super.key,
     required this.username,
-    required this.userBio,
-    required this.fullName,
-    required this.followerCount,
-    this.profilePhotoPath,
   });
   final String username;
-  final String fullName;
-  final String userBio;
-  final int followerCount;
-  final String? profilePhotoPath;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -33,6 +27,14 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool isThreadTab = true;
+  late String username;
+  late ProfileDTO profileDTO;
+  @override
+  void initState() {
+    super.initState();
+    username = widget.username;
+    profileDTO = profileData[username]!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,28 +75,28 @@ class _ProfilePageState extends State<ProfilePage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 30, left: 15),
                     child: Text(
-                      widget.fullName,
+                      profileDTO.fullName,
                       style: smallHeader(),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10, left: 15),
                     child: Text(
-                      widget.username,
+                      profileDTO.username,
                       style: usernameTextStyle(),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10, left: 15),
                     child: Text(
-                      widget.userBio,
+                      profileDTO.userBio,
                       style: usernameTextStyle(),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, left: 15),
                     child: Text(
-                      "${widget.followerCount} followers",
+                      "${profileDTO.followerCount} followers",
                       style: smallText(),
                     ),
                   ),
@@ -107,13 +109,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       useSafeArea: false,
                       context: context,
                       builder: (_) => ZoomMediaPage(
-                          mediaPath: widget.profilePhotoPath!,
+                          mediaPath: profileDTO.profilePhotoPath!,
                           isMediaCircular: true)),
                   child: ProfileCardAvatar(
                     initials: "JD",
                     withoutAddButton: true,
                     size: const Size(70, 70),
-                    profilePhotoPath: widget.profilePhotoPath,
+                    profilePhotoPath: profileDTO.profilePhotoPath,
                   ),
                 ),
               ),

@@ -4,14 +4,23 @@ import '../../pages/zoom_media_page.dart';
 import '../../utils/utils.dart';
 
 class EntryMedia extends StatelessWidget {
-  const EntryMedia({Key? key, required this.photoAddedPath}) : super(key: key);
+  const EntryMedia(
+      {Key? key,
+      required this.photoAddedPath,
+      required this.withLeftRightPadding})
+      : super(key: key);
   final String photoAddedPath;
+  final bool withLeftRightPadding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(top: photoPadding, bottom: usernameTextPadding),
+      padding: EdgeInsets.only(
+        top: photoPadding,
+        bottom: usernameTextPadding,
+        left: withLeftRightPadding ? paddingToTheSides : 0,
+        right: withLeftRightPadding ? paddingToTheSides : 0,
+      ),
       child: InkWell(
         onTap: () async => await showDialog(
             useSafeArea: false,

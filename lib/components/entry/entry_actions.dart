@@ -16,12 +16,14 @@ class EntryActions extends StatefulWidget {
       required this.onLike,
       required this.onUnlike,
       required this.username,
-      required this.blocContext})
+      required this.blocContext,
+      required this.withLeftRightPadding})
       : super(key: key);
   final String username;
   final Function onLike;
   final Function onUnlike;
   final BuildContext blocContext;
+  final bool withLeftRightPadding;
 
   @override
   State<EntryActions> createState() => _EntryActionsState();
@@ -36,11 +38,13 @@ class _EntryActionsState extends State<EntryActions> {
         isLiked = !isLiked;
       });
   late String username;
+  late bool withLeftRightPadding;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     username = widget.username;
+    withLeftRightPadding = widget.withLeftRightPadding;
   }
 
   void onSend() => optionsSheet(context: context, children: [
@@ -138,7 +142,11 @@ class _EntryActionsState extends State<EntryActions> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: usernameTextPadding),
+      padding: EdgeInsets.only(
+        top: usernameTextPadding,
+        left: withLeftRightPadding ? paddingToTheSides : 0,
+        right: withLeftRightPadding ? paddingToTheSides : 0,
+      ),
       child: Wrap(
         spacing: iconSpacing,
         children: [

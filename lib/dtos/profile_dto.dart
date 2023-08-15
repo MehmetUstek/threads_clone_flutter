@@ -6,12 +6,14 @@ class ProfileDTO {
   final bool isVerifiedUser;
   final String firstName;
   final String lastName;
+  final String fullName;
   final String initials;
 
   ProfileDTO(
       {required this.followerCount,
       required this.username,
       required this.userBio,
+      required this.fullName,
       this.profilePhotoPath,
       this.isVerifiedUser = false,
       required this.firstName,
@@ -26,6 +28,7 @@ class ProfileDTO {
         profilePhotoPath = json['profilePhotoPath'],
         firstName = json['firstName'],
         lastName = json['lastName'],
+        fullName = json["fullName"],
         initials =
             json['firstName'].toString()[0] + json['lastName'].toString()[0];
 

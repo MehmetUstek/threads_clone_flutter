@@ -11,6 +11,7 @@ class SettingsCardDTO implements OptionsCardDTO {
   final Function? onClick;
   final ExtendedCard? extendedCard;
   final bool? titleBold;
+  final Color? textColor;
 
   SettingsCardDTO(
       {this.iconName,
@@ -18,5 +19,6 @@ class SettingsCardDTO implements OptionsCardDTO {
       this.titleBold,
       this.trailingIcon,
       this.onClick,
-      this.extendedCard});
+      this.extendedCard,
+      this.textColor});
 }

@@ -3,29 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads_clone/components/back_icon.dart';
 import 'package:threads_clone/components/card_button.dart';
+import 'package:threads_clone/components/cards/suggested_for_you_card.dart';
 import 'package:threads_clone/components/profile_card_avatar.dart';
 import 'package:threads_clone/dtos/back_button_enum.dart';
 import 'package:threads_clone/pages/zoom_media_page.dart';
 import 'package:threads_clone/styles/text_styles.dart';
+import 'package:threads_clone/utils/profile_data.dart';
 
 import '../components/bottomSheets/edit_profile_bottom_sheet.dart';
 import '../components/bottomSheets/new_thread_bottom_sheet.dart';
+import '../components/bottomSheets/options_sheet.dart';
+import '../components/cards/settings_card.dart';
+import '../dtos/profile_dto.dart';
+import '../dtos/settings_card_dto.dart';
 import '../utils/utils.dart';
 
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({
     super.key,
     required this.username,
-    required this.userBio,
-    required this.fullName,
-    required this.followerCount,
-    this.profilePhotoPath,
   });
   final String username;
-  final String fullName;
-  final String userBio;
-  final int followerCount;
-  final String? profilePhotoPath;
 
   @override
   State<UserProfilePage> createState() => _UserProfilePageState();
@@ -33,13 +31,47 @@ class UserProfilePage extends StatefulWidget {
 
 class _UserProfilePageState extends State<UserProfilePage> {
   bool isThreadTab = true;
+  late ProfileDTO profile;
   late String username;
+  late String userBio;
 
   @override
   void initState() {
     super.initState();
     username = widget.username;
+    profile = profileData[username]!;
+    userBio = profile.userBio;
   }
+
+  void onProfileSettingsClicked() =>
+      optionsSheet(context: context, small: false, children: [
+        SettingsCard(
+          settingsOptions: SettingsCardDTO(
+            cardTitle: "Mute",
+            titleBold: true,
+          ),
+        ),
+        SettingsCard(
+          settingsOptions: SettingsCardDTO(
+            cardTitle: "Restrict",
+            titleBold: true,
+          ),
+        ),
+        SettingsCard(
+          settingsOptions: SettingsCardDTO(
+            cardTitle: "Block",
+            textColor: CupertinoColors.destructiveRed,
+            titleBold: true,
+          ),
+        ),
+        SettingsCard(
+          settingsOptions: SettingsCardDTO(
+            cardTitle: "Report",
+            textColor: CupertinoColors.destructiveRed,
+            titleBold: true,
+          ),
+        ),
+      ]);
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +123,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                 )),
                         InkWell(
                             child: const Icon(CupertinoIcons.ellipsis_circle),
-                            onTap: () => {}),
+                            onTap: onProfileSettingsClicked),
                       ],
                     ),
                   ],
@@ -106,7 +138,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 30, left: 15),
                         child: Text(
-                          widget.fullName,
+                          profile.fullName,
                           style: smallHeader(),
                         ),
                       ),
@@ -120,14 +152,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10, left: 15),
                         child: Text(
-                          widget.userBio,
+                          profile.userBio,
                           style: usernameTextStyle(),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20, left: 15),
                         child: Text(
-                          "${widget.followerCount} followers",
+                          "${profile.followerCount} followers",
                           style: smallText(),
                         ),
                       ),
@@ -140,13 +172,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           useSafeArea: false,
                           context: context,
                           builder: (_) => ZoomMediaPage(
-                              mediaPath: widget.profilePhotoPath!,
+                              mediaPath: profile.profilePhotoPath!,
                               isMediaCircular: true)),
                       child: ProfileCardAvatar(
-                        initials: "JD",
+                        initials: profile.initials,
                         withoutAddButton: true,
                         size: const Size(70, 70),
-                        profilePhotoPath: widget.profilePhotoPath,
+                        profilePhotoPath: profile.profilePhotoPath,
                       ),
                     ),
                   ),
@@ -174,18 +206,28 @@ class _UserProfilePageState extends State<UserProfilePage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: paddingToTheSides,
-                  top: 20,
-                ),
+                    left: paddingToTheSides, top: 20, bottom: 10),
                 child: Text("Suggested for you",
                     style: boldTextStyle(customFontSize: 14)),
               ),
               SizedBox(
-                  height: 150,
-                  child: ListView(
-                      scrollDirection: Axis.horizontal, children: [Text("a")])),
+                height: 200,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  itemBuilder: (context, index) => SuggestedForYouCard(),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      SizedBox(
+                    width: 10,
+                  ),
+                  // itemBuilder: [
+                  //   SuggestedForYouCard(),
+                  //   SuggestedForYouCard(),
+                  // ],
+                ),
+              ),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,

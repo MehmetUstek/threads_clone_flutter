@@ -31,11 +31,19 @@ class SettingsCard extends StatelessWidget {
                             spacing: 20,
                             children: [
                               Icon(settingsOptions.iconName),
-                              Text(settingsOptions.cardTitle)
+                              Text(
+                                settingsOptions.cardTitle,
+                                style: TextStyle(
+                                    color: settingsOptions.textColor ??
+                                        Colors.black),
+                              )
                             ],
                           )
                         : Text(
                             settingsOptions.cardTitle,
+                            style: TextStyle(
+                                color:
+                                    settingsOptions.textColor ?? Colors.black),
                           ),
                     settingsOptions.trailingIcon!
                   ],
@@ -46,7 +54,11 @@ class SettingsCard extends StatelessWidget {
                       spacing: 20,
                       children: [
                         Icon(settingsOptions.iconName),
-                        Text(settingsOptions.cardTitle)
+                        Text(
+                          settingsOptions.cardTitle,
+                          style: TextStyle(
+                              color: settingsOptions.textColor ?? Colors.black),
+                        )
                       ],
                     )
                   : settingsOptions.extendedCard != null
@@ -54,7 +66,9 @@ class SettingsCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(settingsOptions.cardTitle,
-                                style: const TextStyle(
+                                style: TextStyle(
+                                    color: settingsOptions.textColor ??
+                                        Colors.black,
                                     fontWeight: FontWeight.bold)),
                             Text(settingsOptions.extendedCard!.cardSubtitle),
                           ],
@@ -62,6 +76,7 @@ class SettingsCard extends StatelessWidget {
                       : Text(
                           settingsOptions.cardTitle,
                           style: TextStyle(
+                              color: settingsOptions.textColor ?? Colors.black,
                               fontWeight: settingsOptions.titleBold ?? false
                                   ? FontWeight.bold
                                   : FontWeight.normal),

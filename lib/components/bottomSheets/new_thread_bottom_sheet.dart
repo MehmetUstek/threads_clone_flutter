@@ -33,6 +33,6 @@ void newThreadBottomSheet(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: NewThreadCard(profileDTO: profileData["mehmetustekk"]!),
+            child: NewThreadCard(profileDTO: profileData["mustek"]!),
           )
         ]);
