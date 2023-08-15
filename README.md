@@ -7,7 +7,8 @@ Still under development.<br/>
 █▒▒▒▒▒▒▒▒▒ 10%<br/>
 ██▒▒▒▒▒▒▒▒ 20%<br/>
 ███▒▒▒▒▒▒▒ 30%<br/>
-████▒▒▒▒▒▒ 40%<br/><br/>
+████▒▒▒▒▒▒ 40%<br/>
+█████▒▒▒▒▒ 50%<br/><br/>
 
 ## Running instructions
 
