@@ -5,13 +5,37 @@ import 'package:threads_clone/styles/text_styles.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 class SuggestedForYouCard extends StatefulWidget {
-  const SuggestedForYouCard({Key? key}) : super(key: key);
+  const SuggestedForYouCard(
+      {Key? key,
+      required this.username,
+      required this.fullName,
+      required this.profilePhotoPath,
+      required this.initials})
+      : super(key: key);
+  final String username;
+  final String fullName;
+  final String? profilePhotoPath;
+  final String initials;
 
   @override
   State<SuggestedForYouCard> createState() => _SuggestedForYouCardState();
 }
 
 class _SuggestedForYouCardState extends State<SuggestedForYouCard> {
+  late String username;
+  late String fullName;
+  late String initials;
+  late String? profilePhotoPath;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    username = widget.username;
+    fullName = widget.fullName;
+    profilePhotoPath = widget.profilePhotoPath;
+    initials = widget.initials;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,16 +50,22 @@ class _SuggestedForYouCardState extends State<SuggestedForYouCard> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              CircleAvatar(
-                  maxRadius: 45,
-                  backgroundImage: NetworkImage(
-                      "https://avatars.githubusercontent.com/u/53303474?s=400&u=1dc04b3eb1ac41e765f0f2dd1f9ce717b10122f0&v=4")),
+              profilePhotoPath != null
+                  ? CircleAvatar(
+                      maxRadius: 45,
+                      backgroundImage: NetworkImage(profilePhotoPath!))
+                  : CircleAvatar(
+                      maxRadius: 45,
+                      backgroundColor: Colors.orange.shade800,
+                      child: Text(initials,
+                          style: normalTextStyle(color: Colors.white)),
+                    ),
               Text(
-                "Mehmet Ustek",
+                fullName,
                 style: boldTextStyle(customFontSize: 14),
               ),
               Text(
-                "mustek",
+                username,
                 style: smallText(customFontSize: 12),
               ),
               CardButton(

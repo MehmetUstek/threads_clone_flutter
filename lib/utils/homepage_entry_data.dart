@@ -26,6 +26,15 @@ final List homepage_entryData = [
   },
   {
     "replyCount": randomNumberGenerator(),
+    "userDetails": profileData["kgirenes"],
+    "likeCount": randomNumberGenerator(),
+    "entryText": shortLipsumText,
+    "photoAddedPath":
+        'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
+    "entryId": uuid.v4(),
+  },
+  {
+    "replyCount": randomNumberGenerator(),
     "userDetails": profileData["janedoe12"],
     "likeCount": randomNumberGenerator(),
     "entryText": lipsumText,
@@ -54,15 +63,6 @@ final List homepage_entryData = [
     "userDetails": profileData["franzk0"],
     "likeCount": randomNumberGenerator(),
     "entryText": shortLipsumText,
-    "entryId": uuid.v4(),
-  },
-  {
-    "replyCount": randomNumberGenerator(),
-    "userDetails": profileData["kgirenes"],
-    "likeCount": randomNumberGenerator(),
-    "entryText": shortLipsumText,
-    "photoAddedPath":
-        'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
     "entryId": uuid.v4(),
   },
 ];

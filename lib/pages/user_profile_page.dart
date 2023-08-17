@@ -214,8 +214,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 height: 200,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 3,
-                  itemBuilder: (context, index) => SuggestedForYouCard(),
+                  itemCount: profileData.length,
+                  itemBuilder: (context, index) => SuggestedForYouCard(
+                    profilePhotoPath:
+                        profileData.values.elementAt(index).profilePhotoPath,
+                    initials: profileData.values.elementAt(index).initials,
+                    fullName: profileData.values.elementAt(index).fullName,
+                    username: profileData.values.elementAt(index).username,
+                  ),
                   separatorBuilder: (BuildContext context, int index) =>
                       SizedBox(
                     width: 10,
