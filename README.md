@@ -13,17 +13,17 @@ Still under development.<br/>
 
 ## Images from the application on a physical device<br/>
 
-Home Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Profile Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;New Thread Bottom Sheet<br/>
+Home Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Profile Page&emsp;&emsp;&emsp;&emsp;&emsp;New Thread Bottom Sheet<br/>
 <img src="photos_from_app/home_page.PNG" alt="Home Page" width="200"/>
 <img src="photos_from_app/profile_page.PNG" alt="Profile Page" width="200"/>
 <img src="photos_from_app/new_thread.PNG" alt="New Thread Bottom Sheet" width="200"/>
 <br/>
-Activity Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Likes Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Privacy Options<br/>
+Activity Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Likes Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Privacy Options<br/>
 <img src="photos_from_app/activity_page.PNG" alt="Activity Page" width="200"/>
 <img src="photos_from_app/likes_page.PNG" alt="Likes Page" width="200"/>
 <img src="photos_from_app/privacy_options.PNG" alt="Privacy Options" width="200"/>
 <br/>
-Search Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;User Profile Page
+Search Page&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;User Profile Page
 <br/>
 <img src="photos_from_app/search_page.PNG" alt="Search Page" width="200"/>
 <img src="photos_from_app/user_profile_page.PNG" alt="User Profile Page" width="200"/>
