@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../pages/likes_page.dart';
 import '../../utils/utils.dart';
 
 class EntryLikeReplyDetails extends StatefulWidget {
@@ -36,10 +37,17 @@ class _EntryLikeReplyDetailsState extends State<EntryLikeReplyDetails> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 5),
-            child: Text(
-              "${widget.likeCount} likes",
-              style: const TextStyle(
-                  color: Colors.grey, fontWeight: FontWeight.bold),
+            child: InkWell(
+              onTap: () => pushToNewPage(
+                  context,
+                  LikesPage(
+                    likeCount: widget.likeCount,
+                  )),
+              child: Text(
+                "${widget.likeCount} likes",
+                style: const TextStyle(
+                    color: Colors.grey, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ],

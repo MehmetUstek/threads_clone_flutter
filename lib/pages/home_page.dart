@@ -40,7 +40,6 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
             itemCount: homepage_entryData.length,
             itemBuilder: (BuildContext context, int index) {
-              print(EntryDTO.fromJson(homepage_entryData[index]));
               return Entry(
                 entryDTO: EntryDTO.fromJson(homepage_entryData[index]),
               );

@@ -10,13 +10,15 @@ class CardButton extends StatelessWidget {
       this.backgroundColor = Colors.white,
       this.textColor = Colors.black,
       required this.onPressed,
-      this.isActive});
+      this.isActive,
+      this.fontSize});
   final String buttonTitle;
   final double fixedWidth;
   final Color? backgroundColor;
   final Color textColor;
   final Function() onPressed;
   final bool? isActive;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CardButton extends StatelessWidget {
       child: Text(
         buttonTitle,
         style: followTextStyle(
+            fontSize: fontSize ?? 13,
             color: isActive == null
                 ? textColor
                 : isActive!

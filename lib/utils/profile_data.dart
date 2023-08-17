@@ -1,4 +1,5 @@
 import 'package:threads_clone/dtos/profile_dto.dart';
+import 'package:threads_clone/utils/random_names_data.dart';
 
 final Map<String, ProfileDTO> profileData = {
   "mustek": ProfileDTO(
@@ -44,4 +45,15 @@ final Map<String, ProfileDTO> profileData = {
     fullName: "Kerem G",
     profilePhotoPath: "https://avatars.githubusercontent.com/u/69321438?v=4",
   ),
+  for (String name in randomNames)
+    (name[0] + name.split(" ").last).toLowerCase(): ProfileDTO(
+      isVerifiedUser: true,
+      followerCount: 10,
+      username: (name[0] + name.split(" ").last).toLowerCase(),
+      userBio: name,
+      firstName: name.split(" ").first,
+      lastName: name.split(" ").last,
+      initials: name[0] + name.split(" ").last[0],
+      fullName: name,
+    ),
 };

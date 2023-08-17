@@ -24,5 +24,6 @@ TextStyle? boldTextStyle(
         {double customFontSize = 17, Color color = Colors.black}) =>
     TextStyle(
         fontSize: customFontSize, fontWeight: FontWeight.bold, color: color);
-TextStyle? followTextStyle({Color color = Colors.black}) =>
-    TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: color);
+TextStyle? followTextStyle(
+        {Color color = Colors.black, double fontSize = 13}) =>
+    TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold, color: color);

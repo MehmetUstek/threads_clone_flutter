@@ -43,8 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const HomePage(),
     const SearchPage(),
     const Text(
-      'Index 2: School',
-      style: optionStyle,
+      '',
     ),
     const ActivityPage(),
     const ProfilePage(

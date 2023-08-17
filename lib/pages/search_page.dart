@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:threads_clone/utils/profile_data.dart';
 
 import '../components/cards/profile_card.dart';
-import '../dtos/profile_dto.dart';
 import '../styles/text_styles.dart';
-import '../utils/search_data.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -48,10 +47,11 @@ class _SearchPageState extends State<SearchPage> {
               )),
           Flexible(
             child: ListView.builder(
-                itemCount: searchData.length,
+                itemCount: profileData.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ProfileCard(
-                    profileDTO: ProfileDTO.fromJson(searchData[index]),
+                    followerCountVisible: true,
+                    profileDTO: profileData.values.elementAt(index),
                   );
                 }),
           ),

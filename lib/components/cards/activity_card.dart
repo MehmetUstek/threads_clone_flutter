@@ -6,6 +6,7 @@ import 'package:threads_clone/styles/color_styles.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 import '../../dtos/profile_dto.dart';
+import '../../pages/user_profile_page.dart';
 
 class ActivityCard extends StatelessWidget {
   const ActivityCard({super.key, required this.profileDTO});
@@ -22,6 +23,8 @@ class ActivityCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: InkWell(
+        onTap: () =>
+            pushToNewPage(context, UserProfilePage(username: username)),
         child: SizedBox(
           width: screenWidth(context),
           child: Column(
@@ -48,7 +51,7 @@ class ActivityCard extends StatelessWidget {
                               Text(
                                 username,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                    fontSize: 13, fontWeight: FontWeight.bold),
                               ),
                               if (isVerifiedUser)
                                 const Padding(
@@ -57,7 +60,7 @@ class ActivityCard extends StatelessWidget {
                                   child: Icon(
                                     CupertinoIcons.check_mark_circled_solid,
                                     color: Colors.blue,
-                                    size: 15,
+                                    size: 14,
                                   ),
                                 ),
                             ],
@@ -87,6 +90,8 @@ class ActivityCard extends StatelessWidget {
                     ),
                     child: SizedBox(
                         child: CardButton(
+                      fontSize: 11,
+                      fixedWidth: 80,
                       buttonTitle: "Confirm",
                       onPressed: () => {},
                     )),
@@ -98,6 +103,8 @@ class ActivityCard extends StatelessWidget {
                     ),
                     child: SizedBox(
                         child: CardButton(
+                      fontSize: 11,
+                      fixedWidth: 65,
                       buttonTitle: "Hide",
                       onPressed: () => {},
                     )),

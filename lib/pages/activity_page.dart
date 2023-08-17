@@ -4,8 +4,7 @@ import 'package:threads_clone/components/activity_filters.dart';
 import 'package:threads_clone/styles/text_styles.dart';
 
 import '../components/cards/activity_card.dart';
-import '../dtos/profile_dto.dart';
-import '../utils/search_data.dart';
+import '../utils/profile_data.dart';
 import '../utils/utils.dart';
 
 class ActivityPage extends StatefulWidget {
@@ -41,10 +40,10 @@ class _ActivityPagePageState extends State<ActivityPage> {
               setAppliedFilter: setAppliedFilter),
           Expanded(
             child: ListView.builder(
-                itemCount: searchData.length,
+                itemCount: profileData.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ActivityCard(
-                    profileDTO: ProfileDTO.fromJson(searchData[index]),
+                    profileDTO: profileData.values.elementAt(index),
                   );
                 }),
           ),

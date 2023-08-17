@@ -1,34 +1,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads_clone/components/profile_card_avatar.dart';
+import 'package:threads_clone/pages/user_profile_page.dart';
 import 'package:threads_clone/utils/utils.dart';
 
 import '../../dtos/profile_dto.dart';
 import '../../styles/text_styles.dart';
 
 class ProfileCard extends StatefulWidget {
-  const ProfileCard({super.key, required this.profileDTO});
+  const ProfileCard(
+      {super.key,
+      required this.profileDTO,
+      required this.followerCountVisible});
 
   final ProfileDTO profileDTO;
+  final bool followerCountVisible;
 
   @override
   State<ProfileCard> createState() => _EntryState();
 }
 
 class _EntryState extends State<ProfileCard> {
+  late bool followerCountVisible;
+  late ProfileDTO profileDTO;
+  late String username;
+  late bool isVerifiedUser;
+  late String? profilePhotoPath;
+  late String userBio;
+  late String initials;
+  late int followerCount;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    followerCountVisible = widget.followerCountVisible;
+    profileDTO = widget.profileDTO;
+    username = profileDTO.username;
+    isVerifiedUser = profileDTO.isVerifiedUser;
+    profilePhotoPath = profileDTO.profilePhotoPath;
+    userBio = profileDTO.userBio;
+    initials = profileDTO.initials;
+    followerCount = profileDTO.followerCount;
+  }
+
   @override
   Widget build(BuildContext context) {
-    ProfileDTO profileDTO = widget.profileDTO;
-    final String username = profileDTO.username;
-    final bool isVerifiedUser = profileDTO.isVerifiedUser;
-    final String? profilePhotoPath = profileDTO.profilePhotoPath;
-    final String userBio = profileDTO.userBio;
-    final String initials = profileDTO.initials;
-    final int followerCount = profileDTO.followerCount;
-
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: InkWell(
+        onTap: () =>
+            pushToNewPage(context, UserProfilePage(username: username)),
         child: SizedBox(
           width: screenWidth(context),
           child: Column(
@@ -39,6 +61,7 @@ class _EntryState extends State<ProfileCard> {
                 children: [
                   ProfileCardAvatar(
                     initials: initials,
+                    profilePhotoPath: profilePhotoPath,
                   ),
                   Expanded(
                     flex: 2,
@@ -80,16 +103,17 @@ class _EntryState extends State<ProfileCard> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: usernameTextPadding),
-                            child: Text(
-                              "$followerCount followers",
-                              style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold),
+                          if (followerCountVisible)
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: usernameTextPadding),
+                              child: Text(
+                                "$followerCount followers",
+                                style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     ),
@@ -113,14 +137,15 @@ class _EntryState extends State<ProfileCard> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Container(
-                  color: Colors.grey.shade300,
-                  width: screenWidth(context),
-                  height: 1,
+              if (followerCountVisible)
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Container(
+                    color: Colors.grey.shade300,
+                    width: screenWidth(context),
+                    height: 1,
+                  ),
                 ),
-              ),
             ],
           ),
         ),
